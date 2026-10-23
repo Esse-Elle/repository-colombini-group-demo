@@ -1,0 +1,457 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Repository Colombini Group</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Karla:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+/* Layout: home di gruppo (banda blu notte con arco + griglia dei brand), pagina brand (barra rossa identitaria, schede sezione, griglia anteprime), visualizzatore a tutto schermo */
+:root{
+  color-scheme: light;
+  /* Gruppo */
+  --cg-navy:#161D33; --cg-greige:#CBC6BB; --cg-taupe:#75655C; --cg-paper:#F4F2EE; --cg-white:#FFFFFF; --cg-ink:#1E2230;
+  /* Febal Casa */
+  --fc-red:#E30513; --fc-moro:#564337; --fc-grey:#857F7D; --fc-light:#DADADA; --fc-black:#000000; --fc-white:#FFFFFF; --fc-paper:#ECEBEA;
+  --f-cg-display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --f-cg-text:"Karla","Helvetica Neue",Arial,sans-serif;
+  --f-fc-display:"Newsreader","Iowan Old Style",Georgia,serif;
+  --f-fc-text:"Plus Jakarta Sans","Helvetica Neue",Arial,sans-serif;
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+}
+*{box-sizing:border-box}
+body{background:var(--cg-paper);color:var(--cg-ink);font-family:var(--f-cg-text);font-size:15px;line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible,label:focus-within{outline:2px solid var(--fc-red);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+h1,h2,h3{text-wrap:balance;margin:0;font-weight:400}
+
+/* ---------- demo bar ---------- */
+.demobar{background:var(--cg-ink);color:#E9E6E0;font-size:13px}
+.demobar .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-block:9px}
+.demobar strong{color:#fff;font-weight:700}
+.demobar .who{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{border:1px solid rgba(255,255,255,.28);background:transparent;border-radius:999px;padding:4px 12px;font-size:12.5px;color:#E9E6E0}
+.chip[aria-pressed="true"]{background:#fff;color:var(--cg-ink);border-color:#fff}
+
+/* ---------- home gruppo ---------- */
+.hero{background:var(--cg-navy);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{position:relative;z-index:1;padding-block:56px 64px;display:grid;gap:22px}
+.hero img.cglogo{height:26px;width:auto}
+.hero h1{font-family:var(--f-cg-display);font-size:clamp(38px,6vw,68px);line-height:1.02;max-width:12ch}
+.hero p{max-width:52ch;color:#D9D6CF;margin:0;font-size:16px}
+.hero .arc{position:absolute;right:-6%;bottom:-8%;width:min(62%,760px);opacity:.95;pointer-events:none}
+@media (max-width:700px){.hero .arc{width:110%;right:-40%;opacity:.35}}
+.home-body{padding-block:44px 64px;display:grid;gap:28px}
+.sect-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:end;border-bottom:1px solid var(--cg-greige);padding-bottom:12px}
+.sect-head h2{font-family:var(--f-cg-display);font-size:30px}
+.sect-head p{margin:0;color:var(--cg-taupe);max-width:56ch}
+.brands{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.bcard{display:grid;grid-template-rows:150px auto;background:var(--cg-white);border:1px solid #E2DED6;text-align:left;padding:0;transition:transform .2s ease, box-shadow .2s ease}
+.bcard:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(22,29,51,.45)}
+.bcard .face{display:grid;place-items:center;position:relative}
+.bcard .face img{max-width:62%;max-height:46px;width:auto}
+.bcard .meta{padding:16px 18px 18px;display:grid;gap:6px}
+.bcard .meta b{font-family:var(--f-cg-display);font-weight:400;font-size:22px}
+.bcard .meta span{color:var(--cg-taupe);font-size:13.5px}
+.status{position:absolute;top:12px;left:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--cg-ink)}
+.status.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#3A9A5B;margin-right:6px;vertical-align:1px}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.linkbox{background:var(--cg-white);border:1px solid #E2DED6;padding:16px 18px;display:grid;gap:8px;min-width:0}
+.linkbox b{font-family:var(--f-cg-display);font-weight:400;font-size:19px}
+.linkbox .sees{color:var(--cg-taupe);font-size:13.5px}
+.url{display:flex;gap:8px;align-items:center;min-width:0}
+.url code{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12.5px;background:var(--cg-paper);padding:6px 8px;border:1px solid #E2DED6;user-select:all}
+.btn-sm{border:1px solid var(--cg-ink);background:transparent;padding:6px 10px;font-size:12.5px;white-space:nowrap}
+.btn-sm.solid{background:var(--cg-ink);color:#fff}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.how div{border-top:2px solid var(--cg-navy);padding-top:12px}
+.how b{display:block;font-family:var(--f-cg-display);font-weight:400;font-size:19px;margin-bottom:4px}
+.how p{margin:0;color:#4C4A52;font-size:14px}
+.archi{display:block;width:100%;max-width:100%;height:auto;opacity:.9}
+
+/* ---------- pagina brand Febal Casa ---------- */
+.fc{background:var(--fc-paper);color:var(--fc-black);font-family:var(--f-fc-text);min-height:100vh;position:relative}
+.fc::before{content:"";position:fixed;left:0;top:0;bottom:0;width:10px;background:var(--fc-red);z-index:5}
+.fc .wrap{padding-left:max(28px, calc(env(safe-area-inset-left, 0px) + 18px))}
+.fc-top{background:var(--fc-light)}
+.fc-top .wrap{padding-block:14px 30px;display:grid;gap:26px}
+.fc-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.fc-bar .crumb{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.fc-bar .crumb button{background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;letter-spacing:inherit;text-transform:inherit;font-size:inherit}
+.fc-hero{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end}
+.fc-hero h1{font-family:var(--f-fc-display);font-size:clamp(36px,5.4vw,60px);line-height:1.05}
+.fc-hero p{margin:10px 0 0;max-width:58ch;color:#3B3431}
+.fc-hero img{width:76px;height:76px}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #C9C7C6}
+.tab{background:none;border:0;padding:12px 14px 13px;font-size:14px;white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1px;color:#3B3431}
+.tab[aria-selected="true"]{border-bottom-color:var(--fc-red);color:var(--fc-black);font-weight:500}
+.tab .n{color:var(--fc-grey);font-variant-numeric:tabular-nums;margin-left:4px}
+.fc-main .wrap{padding-block:26px 70px;display:grid;gap:18px}
+.sec-intro{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:end}
+.sec-intro h2{font-family:var(--f-fc-display);font-size:32px}
+.sec-intro p{margin:4px 0 0;color:#4A4240;max-width:60ch;font-size:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tbtn{border:1px solid var(--fc-black);background:transparent;padding:9px 14px;font-size:13.5px;display:inline-flex;gap:8px;align-items:center}
+.tbtn.primary{background:var(--fc-red);border-color:var(--fc-red);color:#fff}
+.tbtn:disabled{opacity:.4;cursor:not-allowed}
+.selinfo{font-size:13px;color:var(--fc-grey);font-variant-numeric:tabular-nums;margin-right:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:16px}
+.grid.tall{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.item{background:var(--fc-white);display:grid;grid-template-rows:auto 1fr;position:relative;min-width:0;outline:2px solid transparent;transition:outline-color .15s}
+.item.sel{outline-color:var(--fc-red)}
+.thumb{position:relative;display:block;width:100%;padding:0;border:0;background:#F3F2F1;aspect-ratio:3/2;overflow:hidden}
+.grid.tall .thumb{aspect-ratio:4/5}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.thumb.contain img{object-fit:contain;padding:18%}
+.item:hover .thumb img{transform:scale(1.03)}
+.thumb .kind{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.72);color:#fff;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px}
+.pick{position:absolute;top:10px;left:10px;z-index:2;display:grid;place-items:center;width:28px;height:28px;background:rgba(255,255,255,.95);border:1px solid #BDBAB8;cursor:pointer}
+.pick input{appearance:none;width:16px;height:16px;border:1.5px solid var(--fc-black);margin:0;display:grid;place-items:center;cursor:pointer}
+.pick input:checked{background:var(--fc-red);border-color:var(--fc-red)}
+.pick input:checked::after{content:"";width:8px;height:4px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.info{padding:12px 14px 14px;display:grid;gap:4px;align-content:start;min-width:0}
+.info b{font-weight:500;font-size:14px;line-height:1.35}
+.info .fn{font-size:11.5px;color:var(--fc-grey);overflow-wrap:anywhere}
+.info .spec{font-size:12px;color:#4A4240;font-variant-numeric:tabular-nums}
+.row-actions{display:flex;gap:6px;margin-top:8px}
+.row-actions button{flex:1;border:1px solid #C9C7C6;background:transparent;padding:7px 8px;font-size:12.5px}
+.row-actions button:hover{border-color:var(--fc-black)}
+.solo-note{background:var(--fc-moro);color:#fff;font-size:13px}
+.solo-note .wrap{padding-block:9px}
+
+/* ---------- pagina brand in preparazione ---------- */
+.soon{min-height:70vh;display:grid;place-items:center;text-align:center;padding:60px 16px}
+.soon img{height:44px;width:auto;margin:0 auto 22px}
+.soon h1{font-family:var(--f-cg-display);font-size:38px;margin-bottom:10px}
+.soon p{color:var(--cg-taupe);max-width:50ch;margin:0 auto 22px}
+
+/* ---------- visualizzatore ---------- */
+dialog{border:0;padding:0;max-width:none;max-height:none}
+dialog::backdrop{background:rgba(10,10,12,.86)}
+#viewer{width:min(1180px,96vw);height:min(860px,92vh);background:#111;color:#fff;font-family:var(--f-fc-text)}
+#viewer .vgrid{display:grid;grid-template-columns:1fr 320px;height:100%}
+#viewer .stage{position:relative;display:grid;place-items:center;min-height:0;min-width:0;padding:18px;background:#1A1A1A}
+#viewer .stage img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+#viewer .stage.logo img{padding:40px}
+.pager{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;background:rgba(0,0,0,.6);padding:6px 10px;font-size:13px;font-variant-numeric:tabular-nums}
+.pager button,.vnav{background:rgba(255,255,255,.12);border:0;color:#fff;width:34px;height:30px}
+.vnav{position:absolute;top:50%;transform:translateY(-50%);height:46px}
+.vnav.prev{left:10px}.vnav.next{right:10px}
+#viewer aside{padding:22px 20px;display:flex;flex-direction:column;gap:14px;overflow:auto;background:#141414;border-left:1px solid #2A2A2A}
+#viewer aside h3{font-family:var(--f-fc-display);font-size:24px;line-height:1.15}
+#viewer dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:0;font-size:13px}
+#viewer dt{color:#9C9694}#viewer dd{margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+#viewer .close{position:absolute;top:12px;right:12px;z-index:3;background:rgba(0,0,0,.6);border:0;color:#fff;width:36px;height:36px;font-size:20px;line-height:1}
+.vbtn{border:1px solid #fff;background:transparent;color:#fff;padding:11px 12px;font-size:13.5px;text-align:left}
+.vbtn.primary{background:var(--fc-red);border-color:var(--fc-red)}
+.vbtn small{display:block;color:inherit;opacity:.75;font-size:11.5px;margin-top:2px}
+@media (max-width:820px){#viewer{width:100vw;height:100%;max-height:100dvh}#viewer .vgrid{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}#viewer aside{max-height:46vh;border-left:0;border-top:1px solid #2A2A2A}}
+
+/* ---------- finestra download ---------- */
+#dlg{width:min(480px,94vw);background:#fff;color:#000;font-family:var(--f-fc-text)}
+#dlg form{padding:24px;display:grid;gap:14px}
+#dlg h3{font-family:var(--f-fc-display);font-size:26px}
+#dlg p{margin:0;color:#4A4240;font-size:14px}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;border:1px solid #D6D4D3;padding:12px 14px;cursor:pointer}
+.opt:has(input:checked){border-color:var(--fc-red);background:#FDF2F2}
+.opt input{margin-top:4px;accent-color:var(--fc-red)}
+.opt b{font-weight:500}.opt span{grid-column:2;font-size:12.5px;color:#4A4240}
+.dlg-actions{display:flex;justify-content:flex-end;gap:8px}
+.progress{height:4px;background:#EEE;overflow:hidden}.progress i{display:block;height:100%;width:0;background:var(--fc-red);transition:width .2s}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;font-size:14px;z-index:50;max-width:calc(100vw - 32px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div id="app"></div>
+
+<dialog id="viewer" aria-label="Anteprima file"></dialog>
+<dialog id="dlg" aria-label="Opzioni di download"></dialog>
+<div id="toast" role="status" hidden></div>
+
+<script>
+const DATA = {"febalcasa": {"sections": [{"key": "brand", "label": "Asset di brand", "desc": "Brand manual, tone of voice, logo e font ufficiali.", "items": [{"id": "bm", "kind": "pdf", "title": "Brand manual gattini", "file": "fc/brand/FEBALCASA_Brand-Manual-Gattini_2026.pdf", "pages": ["pages/FEBALCASA_Brand-Manual-Gattini_2026-1.jpg", "pages/FEBALCASA_Brand-Manual-Gattini_2026-2.jpg", "pages/FEBALCASA_Brand-Manual-Gattini_2026-3.jpg"], "note": "3 pagine · A4 orizzontale", "thumb": "pages/FEBALCASA_Brand-Manual-Gattini_2026-1.jpg", "size": 81381, "name": "FEBALCASA_Brand-Manual-Gattini_2026.pdf"}, {"id": "tov", "kind": "pdf", "title": "Tone of voice miagolante", "file": "fc/brand/FEBALCASA_Tone-of-Voice-Miagolante_2026.pdf", "pages": ["pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-1.jpg", "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-2.jpg", "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-3.jpg"], "note": "3 pagine · A4 orizzontale", "thumb": "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-1.jpg", "size": 63040, "name": "FEBALCASA_Tone-of-Voice-Miagolante_2026.pdf"}, {"id": "logo1", "kind": "logo", "title": "Logo Febal Casa, quadrato rosso", "file": "fc/brand/logo_febal_casa.png", "thumb": "fc/brand/logo_febal_casa.png", "note": "PNG trasparente", "bg": "#ffffff", "size": 38679, "name": "logo_febal_casa.png"}, {"id": "logo2", "kind": "logo", "title": "Logo Febal Casa, bianco su rosso", "file": "fc/brand/logo_febal_casa_bianco.png", "thumb": "fc/brand/logo_febal_casa_bianco.png", "note": "PNG trasparente, per fondi rossi", "bg": "#E30513", "size": 30882, "name": "logo_febal_casa_bianco.png"}, {"id": "f1", "kind": "font", "title": "Font titoli, Newsreader 60pt", "file": "fc/brand/FEBALCASA_Font-Titoli_Newsreader-60pt.ttf", "thumb": "thumbs/FEBALCASA_Font-Titoli_Newsreader-60pt.jpg", "note": "TTF · licenza OFL", "size": 116860, "name": "FEBALCASA_Font-Titoli_Newsreader-60pt.ttf"}, {"id": "f2", "kind": "font", "title": "Font testi, Plus Jakarta Sans", "file": "fc/brand/FEBALCASA_Font-Testi_PlusJakartaSans.ttf", "thumb": "thumbs/FEBALCASA_Font-Testi_PlusJakartaSans.jpg", "note": "TTF · licenza OFL", "size": 94756, "name": "FEBALCASA_Font-Testi_PlusJakartaSans.ttf"}], "folder": "FEBALCASA_Asset-di-brand"}, {"key": "catalogo", "label": "Foto catalogo", "desc": "Foto in alta risoluzione. Al download scegli l'originale o la versione social HD a 150 dpi, creata al momento.", "items": [{"id": "c0", "kind": "photo", "hr": true, "title": "Cucina Fusa, isola in rovere", "file": "fc/catalogo/FEBALCASA_Cucina-Fusa_isola_01.jpg", "thumb": "thumbs/FEBALCASA_Cucina-Fusa_isola_01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 403366, "name": "FEBALCASA_Cucina-Fusa_isola_01.jpg"}, {"id": "c1", "kind": "photo", "hr": true, "title": "Living Morbido, divano tre posti", "file": "fc/catalogo/FEBALCASA_Living-Morbido_divano_02.jpg", "thumb": "thumbs/FEBALCASA_Living-Morbido_divano_02.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 384597, "name": "FEBALCASA_Living-Morbido_divano_02.jpg"}, {"id": "c2", "kind": "photo", "hr": true, "title": "Notte Ronfante, letto imbottito", "file": "fc/catalogo/FEBALCASA_Notte-Ronfante_letto_03.jpg", "thumb": "thumbs/FEBALCASA_Notte-Ronfante_letto_03.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 332629, "name": "FEBALCASA_Notte-Ronfante_letto_03.jpg"}, {"id": "c3", "kind": "photo", "hr": true, "title": "Cucina Fusa, finitura rosso Febal", "file": "fc/catalogo/FEBALCASA_Cucina-Fusa_rosso_04.jpg", "thumb": "thumbs/FEBALCASA_Cucina-Fusa_rosso_04.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 372979, "name": "FEBALCASA_Cucina-Fusa_rosso_04.jpg"}, {"id": "c4", "kind": "photo", "hr": true, "title": "Living Morbido, libreria a giorno", "file": "fc/catalogo/FEBALCASA_Living-Morbido_libreria_05.jpg", "thumb": "thumbs/FEBALCASA_Living-Morbido_libreria_05.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 451276, "name": "FEBALCASA_Living-Morbido_libreria_05.jpg"}, {"id": "c5", "kind": "photo", "hr": true, "title": "Dining Coda, tavolo e sedute", "file": "fc/catalogo/FEBALCASA_Dining-Coda_tavolo_06.jpg", "thumb": "thumbs/FEBALCASA_Dining-Coda_tavolo_06.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 354058, "name": "FEBALCASA_Dining-Coda_tavolo_06.jpg"}, {"id": "c6", "kind": "photo", "hr": true, "title": "Notte Ronfante, armadio con cabina", "file": "fc/catalogo/FEBALCASA_Notte-Ronfante_armadio_07.jpg", "thumb": "thumbs/FEBALCASA_Notte-Ronfante_armadio_07.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 341115, "name": "FEBALCASA_Notte-Ronfante_armadio_07.jpg"}, {"id": "c7", "kind": "photo", "hr": true, "title": "Ingresso Baffo, madia sospesa", "file": "fc/catalogo/FEBALCASA_Ingresso-Baffo_madia_08.jpg", "thumb": "thumbs/FEBALCASA_Ingresso-Baffo_madia_08.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 371151, "name": "FEBALCASA_Ingresso-Baffo_madia_08.jpg"}], "folder": "FEBALCASA_Foto-catalogo"}, {"key": "ped", "label": "Foto PED", "desc": "Post del piano editoriale, già pronti in bassa per i social.", "items": [{"id": "p0", "kind": "photo", "title": "Il custode della cucina", "file": "fc/ped/FEBALCASA_PED_Ott26_post01_custode.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post01_custode.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 73560, "name": "FEBALCASA_PED_Ott26_post01_custode.jpg"}, {"id": "p1", "kind": "photo", "title": "La siesta perfetta", "file": "fc/ped/FEBALCASA_PED_Ott26_post02_siesta.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post02_siesta.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 62315, "name": "FEBALCASA_PED_Ott26_post02_siesta.jpg"}, {"id": "p2", "kind": "photo", "title": "Buonanotte, design", "file": "fc/ped/FEBALCASA_PED_Ott26_post03_buonanotte.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post03_buonanotte.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 61578, "name": "FEBALCASA_PED_Ott26_post03_buonanotte.jpg"}, {"id": "p3", "kind": "photo", "title": "Colazione con vista", "file": "fc/ped/FEBALCASA_PED_Ott26_post04_colazione.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post04_colazione.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 78646, "name": "FEBALCASA_PED_Ott26_post04_colazione.jpg"}, {"id": "p4", "kind": "photo", "title": "Sotto il tavolo si sta meglio", "file": "fc/ped/FEBALCASA_PED_Ott26_post05_tavolo.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post05_tavolo.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 73887, "name": "FEBALCASA_PED_Ott26_post05_tavolo.jpg"}, {"id": "p5", "kind": "photo", "title": "Bentornati a casa", "file": "fc/ped/FEBALCASA_PED_Ott26_post06_bentornati.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post06_bentornati.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 68370, "name": "FEBALCASA_PED_Ott26_post06_bentornati.jpg"}], "folder": "FEBALCASA_Foto-PED"}, {"key": "cataloghi", "label": "Cataloghi PDF", "desc": "Cataloghi di collezione sfogliabili prima del download.", "items": [{"id": "ne-Fusa_2027", "kind": "pdf", "title": "Catalogo Cucine Fusa 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Cucine-Fusa_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-1.jpg", "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-2.jpg", "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 431383, "name": "FEBALCASA_Catalogo_Cucine-Fusa_2027.pdf"}, {"id": "Morbido_2027", "kind": "pdf", "title": "Catalogo Living Morbido 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Living-Morbido_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Living-Morbido_2027-1.jpg", "pages/FEBALCASA_Catalogo_Living-Morbido_2027-2.jpg", "pages/FEBALCASA_Catalogo_Living-Morbido_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Living-Morbido_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 466899, "name": "FEBALCASA_Catalogo_Living-Morbido_2027.pdf"}, {"id": "onfante_2027", "kind": "pdf", "title": "Catalogo Notte Ronfante 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Notte-Ronfante_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-1.jpg", "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-2.jpg", "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 417305, "name": "FEBALCASA_Catalogo_Notte-Ronfante_2027.pdf"}], "folder": "FEBALCASA_Cataloghi-PDF"}]}};
+const HOSTED = !/claudeusercontent|claude\.ai/.test(location.hostname) && location.protocol.startsWith("http");
+const ARTIFACT_URL = HOSTED ? location.origin + location.pathname : "https://claude.ai/artifact/BGGMc6ZR96wym6CCwnLvWf";
+const BRANDS = [
+  {key:"febalcasa", name:"Febal Casa", logo:"group/logo-febalcasa-bianco.png", bg:"#E30513", live:true, theme:"Gattini in casa", token:"febal-casa"},
+  {key:"colombinicasa", name:"Colombini Casa", logo:"group/logo-colombinicasa-bianco.png", bg:"#1D1A19", live:false, theme:"Gattini in casa, nella prossima versione", token:"colombini-casa"},
+  {key:"colombinioffice", name:"Colombini Office", logo:"group/logo-colombinioffice-bianco.png", bg:"#2A2724", live:false, theme:"Gattini in ufficio, nella prossima versione", token:"colombini-office"},
+  {key:"contract", name:"Colombini Group Contract", logo:"group/logo-colombinigroupcontract-bianco.png", bg:"#24364F", live:false, theme:"Gattini sui palazzi di New York, nella prossima versione", token:"contract"},
+];
+// Profili di accesso: ogni profilo corrisponde a un link diverso
+const PROFILES = [
+  {token:"gruppo", label:"Marketing di gruppo", sees:"Gruppo e tutti i brand", brands:["febalcasa","colombinicasa","colombinioffice","contract"], solo:null},
+  {token:"gruppo-fc-cgc", label:"Dipendente", sees:"Gruppo, Febal Casa e Contract", brands:["febalcasa","contract"], solo:null},
+  {token:"fc-accesso-k7m2", label:"Agente Febal Casa", sees:"Solo Febal Casa, senza accesso al gruppo", brands:["febalcasa"], solo:"febalcasa"},
+];
+
+const state = {profile: PROFILES[0], brand:null, section:"brand", sel:new Set(), viewer:null};
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmtSize = b => b > 1048576 ? (b/1048576).toFixed(1).replace(".",",")+" MB" : Math.round(b/1024)+" KB";
+const linkFor = t => (ARTIFACT_URL || "[link della pagina]") + "#" + t;
+
+function toast(msg){ const t=$("#toast"); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>t.hidden=true,3600); }
+
+/* ---------- routing con token semplici ---------- */
+function route(){
+  const h = (location.hash||"").replace("#","");
+  const prof = PROFILES.find(p=>p.token===h);
+  if (prof){ state.profile=prof; if (prof.solo){ openBrand(prof.solo, true); return; } renderHome(); return; }
+  const b = BRANDS.find(b=>b.token===h);
+  if (b){ if (!state.profile.brands.includes(b.key)) state.profile = PROFILES[0]; openBrand(b.key, !!state.profile.solo); return; }
+  if (state.profile.solo){ openBrand(state.profile.solo, true); return; }
+  renderHome();
+}
+function go(token){ if (location.hash === "#"+token) route(); else location.hash = token; }
+window.addEventListener("hashchange", route);
+
+/* ---------- barra demo ---------- */
+function demoBar(){
+  return `<div class="demobar"><div class="wrap">
+    <span><strong>Demo</strong> con contenuti di prova. Simula l'accesso di:</span>
+    <span class="who">${PROFILES.map(p=>`<button class="chip" data-prof="${p.token}" aria-pressed="${p===state.profile}">${esc(p.label)}</button>`).join("")}</span>
+  </div></div>`;
+}
+function bindDemo(root){ root.querySelectorAll("[data-prof]").forEach(b=>b.onclick=()=>{ state.profile=PROFILES.find(p=>p.token===b.dataset.prof); go(state.profile.token); }); }
+
+/* ---------- home di gruppo ---------- */
+function renderHome(){
+  state.brand=null;
+  const vis = BRANDS.filter(b=>state.profile.brands.includes(b.key));
+  $("#app").innerHTML = demoBar() + `
+  <header class="hero"><img class="arc" src="group/arco-grande.png" alt="">
+    <div class="wrap">
+      <img class="cglogo" src="group/logo-colombinigroup-bianco.png" alt="ColombiniGroup">
+      <h1>Repository di Gruppo</h1>
+      <p>Foto, cataloghi e asset di brand in un unico posto. Sfogli l'anteprima di ogni file e scarichi solo quello che ti serve: un file, una selezione o l'intera cartella.</p>
+    </div>
+  </header>
+  <main class="wrap home-body">
+    <div class="sect-head"><h2>I brand</h2><p>Accesso: <b>${esc(state.profile.label)}</b>, vede ${esc(state.profile.sees.toLowerCase())}.</p></div>
+    <div class="brands">${vis.map(b=>`
+      <button class="bcard" data-brand="${b.key}">
+        <span class="face" style="background:${b.bg}"><span class="status ${b.live?'live':''}">${b.live?'Online':'In preparazione'}</span><img src="${b.logo}" alt="${esc(b.name)}"></span>
+        <span class="meta"><b>${esc(b.name)}</b><span>${esc(b.theme)}</span></span>
+      </button>`).join("")}</div>
+
+    <div class="sect-head"><h2>Link di accesso</h2><p>Come oggi su SharePoint: chi riceve un link vede solo le cartelle previste per quel link.</p></div>
+    <div class="links">${PROFILES.map(p=>`
+      <div class="linkbox"><b>${esc(p.label)}</b><span class="sees">${esc(p.sees)}</span>
+        <div class="url"><code>${esc(linkFor(p.token))}</code><button class="btn-sm" data-copy="${esc(linkFor(p.token))}">Copia</button><button class="btn-sm solid" data-prof="${p.token}">Prova</button></div>
+      </div>`).join("")}</div>
+
+    <div class="sect-head"><h2>Come funziona</h2><p>Le regole che la demo mette alla prova prima del passaggio sul server interno.</p></div>
+    <div class="how">
+      <div><b>Un solo file in alta</b><p>Le foto catalogo si caricano solo in alta. La versione social HD a 150 dpi viene creata al momento del download.</p></div>
+      <div><b>Anteprima prima di scaricare</b><p>Foto ingrandite, PDF sfogliabili pagina per pagina, font e loghi visibili prima del download.</p></div>
+      <div><b>Uno, alcuni o tutti</b><p>Scarichi il singolo file, una selezione o l'intera cartella in un unico archivio ZIP.</p></div>
+      <div><b>Accesso per link</b><p>Ogni profilo riceve il suo link. L'agente Febal Casa entra direttamente nel suo brand.</p></div>
+    </div>
+    <img class="archi" src="group/archi-fila.png" alt="">
+  </main>`;
+  bindDemo($("#app"));
+  $("#app").querySelectorAll("[data-brand]").forEach(b=>b.onclick=()=>go(BRANDS.find(x=>x.key===b.dataset.brand).token));
+  $("#app").querySelectorAll("[data-copy]").forEach(b=>b.onclick=()=>copyText(b.dataset.copy, b));
+  window.scrollTo(0,0);
+}
+async function copyText(t, btn){
+  try{ await navigator.clipboard.writeText(t); toast("Link copiato"); }
+  catch(e){ const code=btn.parentElement.querySelector("code"); const r=document.createRange(); r.selectNodeContents(code); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast("Link selezionato: copialo con Cmd+C"); }
+}
+
+/* ---------- pagine brand ---------- */
+function openBrand(key, solo){
+  state.brand=key; state.sel.clear();
+  if (key!=="febalcasa"){ renderSoon(key); return; }
+  renderFebal(solo);
+}
+function renderSoon(key){
+  const b=BRANDS.find(x=>x.key===key);
+  $("#app").innerHTML = demoBar() + `<div class="soon"><div>
+    <div style="background:${b.bg};padding:26px 34px;display:inline-block;margin-bottom:22px"><img src="${b.logo}" alt="${esc(b.name)}" style="margin:0"></div>
+    <h1>${esc(b.name)}</h1><p>Questa sezione arriva nella prossima versione della demo: ${esc(b.theme.split(",")[0].toLowerCase())}, con la grafica del brand.</p>
+    <button class="btn-sm solid" id="back">Torna al gruppo</button></div></div>`;
+  bindDemo($("#app")); $("#back").onclick=()=>go(state.profile.token);
+}
+
+function curSection(){ return DATA.febalcasa.sections.find(s=>s.key===state.section); }
+
+function renderFebal(solo){
+  const secs = DATA.febalcasa.sections;
+  $("#app").innerHTML = demoBar() + (solo?`<div class="solo-note"><div class="wrap">Vista agente: questo link apre solo Febal Casa. Il gruppo e gli altri brand non sono raggiungibili.</div></div>`:"") + `
+  <div class="fc">
+    <div class="fc-top"><div class="wrap">
+      <div class="fc-bar"><span class="crumb">${solo?'<span>Febal Casa</span>':'<button id="toGroup">Colombini Group</button><span>/</span><span>Febal Casa</span>'}</span><span>Repository 2026</span></div>
+      <div class="fc-hero"><div><h1>Repository Febal Casa</h1><p>Asset di brand, foto catalogo, foto del piano editoriale e cataloghi. Contenuti di prova: in ogni casa c'è un gattino.</p></div>
+        <img src="fc/brand/logo_febal_casa.png" alt="Febal Casa"></div>
+      <div class="tabs" role="tablist">${secs.map(s=>`<button class="tab" role="tab" data-sec="${s.key}" aria-selected="${s.key===state.section}">${esc(s.label)}<span class="n">${s.items.length}</span></button>`).join("")}</div>
+    </div></div>
+    <main class="fc-main"><div class="wrap" id="secwrap"></div></main>
+  </div>`;
+  bindDemo($("#app"));
+  const tg=$("#toGroup"); if (tg) tg.onclick=()=>go(state.profile.token);
+  $("#app").querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>{ state.section=b.dataset.sec; state.sel.clear(); $("#app").querySelectorAll("[data-sec]").forEach(x=>x.setAttribute("aria-selected", x===b)); renderSection(); });
+  renderSection(); window.scrollTo(0,0);
+}
+
+function specLine(it){
+  if (it.kind==="photo") return `${it.w} × ${it.h} px · ${it.dpi} dpi · ${fmtSize(it.size)}`;
+  return `${it.note||""} · ${fmtSize(it.size)}`;
+}
+function kindLabel(it){ return {photo: it.hr?"JPG alta":"JPG social", pdf:"PDF", logo:"PNG", font:"TTF"}[it.kind]; }
+
+function renderSection(){
+  const s=curSection(); const w=$("#secwrap");
+  const tall = s.key==="ped";
+  w.innerHTML = `
+    <div class="sec-intro"><div><h2>${esc(s.label)}</h2><p>${esc(s.desc)}</p></div>
+      <div class="toolbar"><span class="selinfo" id="selinfo"></span>
+        <button class="tbtn" id="selAll"></button>
+        <button class="tbtn" id="dlSel" disabled>Scarica selezione</button>
+        <button class="tbtn primary" id="dlAll">Scarica cartella (${s.items.length})</button></div></div>
+    <div class="grid ${tall?'tall':''}">${s.items.map(it=>`
+      <article class="item" data-id="${it.id}">
+        <label class="pick" title="Seleziona"><input type="checkbox" data-pick="${it.id}" aria-label="Seleziona ${esc(it.title)}"></label>
+        <button class="thumb ${it.kind==='logo'?'contain':''}" data-open="${it.id}" style="${it.bg?`background:${it.bg}`:''}" aria-label="Anteprima di ${esc(it.title)}">
+          <img loading="lazy" src="${it.thumb}" alt=""><span class="kind">${kindLabel(it)}</span></button>
+        <div class="info"><b>${esc(it.title)}</b><span class="fn">${esc(it.name)}</span><span class="spec">${specLine(it)}</span>
+          <div class="row-actions"><button data-open="${it.id}">Anteprima</button><button data-dl="${it.id}">Scarica</button></div></div>
+      </article>`).join("")}</div>`;
+  w.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>openViewer(b.dataset.open));
+  w.querySelectorAll("[data-dl]").forEach(b=>b.onclick=()=>startDownload([find(b.dataset.dl)], "single"));
+  w.querySelectorAll("[data-pick]").forEach(c=>c.onchange=()=>{ c.checked?state.sel.add(c.dataset.pick):state.sel.delete(c.dataset.pick); syncSel(); });
+  $("#selAll").onclick=()=>{ const all=state.sel.size===s.items.length; state.sel=new Set(all?[]:s.items.map(i=>i.id)); syncSel(); };
+  $("#dlSel").onclick=()=>startDownload(s.items.filter(i=>state.sel.has(i.id)), "zip-sel");
+  $("#dlAll").onclick=()=>startDownload(s.items, "zip-all");
+  syncSel();
+}
+function syncSel(){
+  const s=curSection(); const n=state.sel.size;
+  document.querySelectorAll("[data-pick]").forEach(c=>{ c.checked=state.sel.has(c.dataset.pick); c.closest(".item").classList.toggle("sel", c.checked); });
+  $("#selinfo").textContent = n? `${n} selezionat${n===1?'o':'i'}` : "";
+  $("#selAll").textContent = n===s.items.length ? "Deseleziona tutto" : "Seleziona tutto";
+  const d=$("#dlSel"); d.disabled=!n; d.textContent = n ? `Scarica selezione (${n})` : "Scarica selezione";
+}
+function find(id){ for (const s of DATA.febalcasa.sections){ const it=s.items.find(i=>i.id===id); if (it) return it; } }
+
+/* ---------- visualizzatore ---------- */
+function openViewer(id){
+  const s=curSection(); const idx=s.items.findIndex(i=>i.id===id);
+  state.viewer={idx, page:0}; drawViewer();
+  const v=$("#viewer"); if (!v.open) v.showModal();
+}
+function drawViewer(){
+  const s=curSection(); const it=s.items[state.viewer.idx]; const v=$("#viewer");
+  const pg=state.viewer.page;
+  let src = it.kind==="photo" ? it.file : it.kind==="pdf" ? it.pages[pg] : it.kind==="logo" ? it.file : it.thumb;
+  const dlButtons = it.kind==="photo" && it.hr ? `
+      <button class="vbtn primary" data-q="alta">Scarica originale<small>${it.w} × ${it.h} px · 300 dpi · ${fmtSize(it.size)}</small></button>
+      <button class="vbtn" data-q="bassa">Scarica per social HD<small>1920 × 1280 px · 150 dpi · creata ora</small></button>`
+    : `<button class="vbtn primary" data-q="file">Scarica ${kindLabel(it)}<small>${fmtSize(it.size)}</small></button>`;
+  v.innerHTML = `<button class="close" aria-label="Chiudi">×</button><div class="vgrid">
+    <div class="stage ${it.kind==='logo'?'logo':''}" style="${it.bg?`background:${it.bg}`:''}">
+      <img src="${src}" alt="${esc(it.title)}">
+      ${s.items.length>1?`<button class="vnav prev" aria-label="File precedente">‹</button><button class="vnav next" aria-label="File successivo">›</button>`:""}
+      ${it.kind==="pdf"?`<div class="pager"><button data-pg="-1" aria-label="Pagina precedente">‹</button><span>Pagina ${pg+1} di ${it.pages.length}</span><button data-pg="1" aria-label="Pagina successiva">›</button></div>`:""}
+    </div>
+    <aside><span class="eyebrow" style="color:#9C9694">${esc(curSection().label)} · ${state.viewer.idx+1} di ${s.items.length}</span>
+      <h3>${esc(it.title)}</h3>
+      <dl><dt>File</dt><dd>${esc(it.name)}</dd><dt>Formato</dt><dd>${kindLabel(it)}</dd>
+        ${it.kind==="photo"?`<dt>Misure</dt><dd>${it.w} × ${it.h} px</dd><dt>Risoluzione</dt><dd>${it.dpi} dpi</dd>`:""}
+        ${it.kind==="pdf"?`<dt>Pagine</dt><dd>${it.pages.length}</dd>`:""}
+        <dt>Peso</dt><dd>${fmtSize(it.size)}</dd></dl>
+      ${dlButtons}
+    </aside></div>`;
+  v.querySelector(".close").onclick=()=>v.close();
+  const nav=d=>{ state.viewer.idx=(state.viewer.idx+d+s.items.length)%s.items.length; state.viewer.page=0; drawViewer(); };
+  const p=v.querySelector(".vnav.prev"), n=v.querySelector(".vnav.next"); if(p){p.onclick=()=>nav(-1); n.onclick=()=>nav(1);}
+  v.querySelectorAll("[data-pg]").forEach(b=>b.onclick=()=>{ state.viewer.page=(pg+ +b.dataset.pg+it.pages.length)%it.pages.length; drawViewer(); });
+  v.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>doDownload([it], b.dataset.q==="bassa"?"bassa":"alta", "single"));
+  v.onkeydown=e=>{ if(e.key==="ArrowRight") nav(1); if(e.key==="ArrowLeft") nav(-1); };
+}
+
+/* ---------- download ---------- */
+let dlNS; const dlReady = (async()=>{ try{ dlNS = (window.claude && window.claude.use) ? await window.claude.use("downloads") : null; }catch(e){ dlNS=null; }
+  if (!dlNS) dlNS = { save: async ({filename, data}) => { const url=URL.createObjectURL(data instanceof Blob?data:new Blob([data])); const a=document.createElement("a"); a.href=url; a.download=filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),60000); return {status:"saved"}; } };
+})();
+
+function startDownload(items, mode){
+  if (!items.length) return;
+  const hasHR = items.some(i=>i.kind==="photo" && i.hr);
+  if (!hasHR) return doDownload(items, "alta", mode);
+  const d=$("#dlg"); const multi = mode!=="single";
+  d.innerHTML = `<form method="dialog"><h3>${multi?`Scarica ${items.length} foto`:'Scarica la foto'}</h3>
+    <p>Le foto catalogo sono archiviate solo in alta risoluzione. Scegli la versione che ti serve.</p>
+    <label class="opt"><input type="radio" name="q" value="alta" checked><b>Alta risoluzione, originale</b><span>4500 × 3000 px · 300 dpi · per stampa e cataloghi</span></label>
+    <label class="opt"><input type="radio" name="q" value="bassa"><b>Bassa, social HD</b><span>1920 × 1280 px · 150 dpi · creata al momento del download</span></label>
+    ${multi?`<label class="opt"><input type="radio" name="q" value="entrambe"><b>Entrambe</b><span>Due cartelle nello stesso ZIP: Alta e Social-HD</span></label>`:""}
+    <div class="progress" hidden><i></i></div>
+    <div class="dlg-actions"><button class="btn-sm" value="cancel" type="button" id="dlgCancel">Annulla</button><button class="btn-sm solid" type="submit" id="dlgGo">Scarica</button></div></form>`;
+  d.showModal();
+  $("#dlgCancel").onclick=()=>d.close();
+  d.querySelector("form").onsubmit=async e=>{ e.preventDefault(); const q=new FormData(e.target).get("q"); await doDownload(items, q, mode, d); };
+}
+
+async function fetchBlob(url){ const r=await fetch(url); if(!r.ok) throw new Error("fetch"); return r.blob(); }
+function loadImg(src){ return new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=src; }); }
+function setJfif150(buf){
+  let u=new Uint8Array(buf);
+  if (u[2]===0xFF && u[3]===0xE0 && u[6]===0x4A && u[7]===0x46 && u[8]===0x49 && u[9]===0x46){ u[13]=1; u[14]=0; u[15]=150; u[16]=0; u[17]=150; return u; }
+  const app0=new Uint8Array([0xFF,0xE0,0,16,0x4A,0x46,0x49,0x46,0,1,1,1,0,150,0,150,0,0]);
+  const out=new Uint8Array(u.length+app0.length); out.set(u.slice(0,2),0); out.set(app0,2); out.set(u.slice(2),2+app0.length); return out;
+}
+async function makeSocial(it){
+  const im=await loadImg(it.file); const k=1920/Math.max(im.naturalWidth, im.naturalHeight);
+  const c=document.createElement("canvas"); c.width=Math.round(im.naturalWidth*k); c.height=Math.round(im.naturalHeight*k);
+  const g=c.getContext("2d"); g.imageSmoothingQuality="high"; g.drawImage(im,0,0,c.width,c.height);
+  const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",0.9));
+  return new Blob([setJfif150(await blob.arrayBuffer())],{type:"image/jpeg"});
+}
+const socialName = n => n.replace(/\.jpg$/i, "_social-HD_150dpi.jpg");
+
+async function doDownload(items, q, mode, dialog){
+  await dlReady;
+  if (!dlNS){ if(dialog) dialog.close(); toast("Download non disponibile in questa vista: apri la pagina in claude.ai"); return; }
+  const bar = dialog && dialog.querySelector(".progress"); if (bar) bar.hidden=false;
+  const tick = f => { if (bar) bar.firstElementChild.style.width=Math.round(f*100)+"%"; };
+  const go=$("#dlgGo"); if (go) { go.disabled=true; go.textContent="Preparo…"; }
+  try{
+    let filename, data;
+    if (mode==="single"){
+      const it=items[0];
+      if (it.kind==="photo" && it.hr && q==="bassa"){ data=await makeSocial(it); filename=socialName(it.name); }
+      else { data=await fetchBlob(it.file); filename=it.name; }
+    } else {
+      if (typeof JSZip==="undefined") throw new Error("zip");
+      const zip=new JSZip(); const s=curSection(); let i=0;
+      for (const it of items){
+        const isHR = it.kind==="photo" && it.hr;
+        if (!isHR || q==="alta") zip.file(it.name, await fetchBlob(it.file));
+        else if (q==="bassa") zip.file(socialName(it.name), await makeSocial(it));
+        else { zip.file("Alta/"+it.name, await fetchBlob(it.file)); zip.file("Social-HD/"+socialName(it.name), await makeSocial(it)); }
+        tick(++i/items.length*0.8);
+      }
+      data=await zip.generateAsync({type:"blob"}, m=>tick(0.8+m.percent/500));
+      const suff = q==="bassa"?"_social-HD":q==="entrambe"?"_alta-e-social":"";
+      filename = s.folder + (mode==="zip-sel"?`_selezione-${items.length}-file`:"") + suff + ".zip";
+    }
+    if (dialog) dialog.close();
+    await dlNS.save({filename, data});
+    toast("Download avviato: "+filename);
+  }catch(e){
+    if (dialog && dialog.open) dialog.close();
+    const c=e&&e.code;
+    if (c==="declined") toast("Download annullato");
+    else if (c==="rate_limited") toast("C'è già una richiesta di download aperta");
+    else toast("Download non riuscito, riprova tra poco");
+  }
+}
+
+route();
+</script>
+</body></html>
