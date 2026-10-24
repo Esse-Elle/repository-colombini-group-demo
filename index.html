@@ -133,6 +133,15 @@ h1,h2,h3{text-wrap:balance;margin:0;font-weight:400}
 .fcrumb{display:flex;gap:8px;align-items:center;font-size:13px}
 .fcrumb button{background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px}
 .fcrumb b{font-weight:500}
+.search{display:grid;gap:8px;max-width:720px}
+.search input{font:inherit;font-size:16px;padding:12px 14px;border:1px solid #9E9997;background:var(--fc-white);color:var(--fc-black);width:100%}
+.search input:focus{outline:2px solid var(--fc-red);outline-offset:0;border-color:var(--fc-red)}
+.examples{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:#4A4240}
+.examples button{border:1px solid #B9B5B3;background:transparent;padding:4px 10px;border-radius:999px;font-size:12.5px}
+.examples button:hover{border-color:var(--fc-black)}
+.fpath{background:none;border:0;padding:0;text-align:left;font-size:11.5px;color:var(--fc-red);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.seltools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.subhead{font-family:var(--f-fc-display);font-size:22px;margin-top:10px}
 .sharemeta{display:inline-block;background:var(--fc-moro);color:#fff!important;padding:5px 10px;font-size:13px}
 body.viewonly .dlonly,body.viewonly .pick{display:none!important}
 /* ---------- pagina brand in preparazione ---------- */
@@ -187,7 +196,7 @@ dialog::backdrop{background:rgba(10,10,12,.86)}
 <div id="toast" role="status" hidden></div>
 
 <script>
-const DATA = {"febalcasa": {"sections": [{"key": "brand", "label": "Asset di brand", "desc": "Brand manual, tone of voice, logo e font ufficiali.", "items": [{"id": "bm", "kind": "pdf", "title": "Brand manual gattini", "file": "fc/brand/FEBALCASA_Brand-Manual-Gattini_2026.pdf", "pages": ["pages/FEBALCASA_Brand-Manual-Gattini_2026-1.jpg", "pages/FEBALCASA_Brand-Manual-Gattini_2026-2.jpg", "pages/FEBALCASA_Brand-Manual-Gattini_2026-3.jpg"], "note": "3 pagine · A4 orizzontale", "thumb": "pages/FEBALCASA_Brand-Manual-Gattini_2026-1.jpg", "size": 81381, "name": "FEBALCASA_Brand-Manual-Gattini_2026.pdf"}, {"id": "tov", "kind": "pdf", "title": "Tone of voice miagolante", "file": "fc/brand/FEBALCASA_Tone-of-Voice-Miagolante_2026.pdf", "pages": ["pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-1.jpg", "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-2.jpg", "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-3.jpg"], "note": "3 pagine · A4 orizzontale", "thumb": "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-1.jpg", "size": 63040, "name": "FEBALCASA_Tone-of-Voice-Miagolante_2026.pdf"}, {"id": "logo1", "kind": "logo", "title": "Logo Febal Casa, quadrato rosso", "file": "fc/brand/logo_febal_casa.png", "thumb": "fc/brand/logo_febal_casa.png", "note": "PNG trasparente", "bg": "#ffffff", "size": 38679, "name": "logo_febal_casa.png"}, {"id": "logo2", "kind": "logo", "title": "Logo Febal Casa, bianco su rosso", "file": "fc/brand/logo_febal_casa_bianco.png", "thumb": "fc/brand/logo_febal_casa_bianco.png", "note": "PNG trasparente, per fondi rossi", "bg": "#E30513", "size": 30882, "name": "logo_febal_casa_bianco.png"}, {"id": "f1", "kind": "font", "title": "Font titoli, Newsreader 60pt", "file": "fc/brand/FEBALCASA_Font-Titoli_Newsreader-60pt.ttf", "thumb": "thumbs/FEBALCASA_Font-Titoli_Newsreader-60pt.jpg", "note": "TTF · licenza OFL", "size": 116860, "name": "FEBALCASA_Font-Titoli_Newsreader-60pt.ttf"}, {"id": "f2", "kind": "font", "title": "Font testi, Plus Jakarta Sans", "file": "fc/brand/FEBALCASA_Font-Testi_PlusJakartaSans.ttf", "thumb": "thumbs/FEBALCASA_Font-Testi_PlusJakartaSans.jpg", "note": "TTF · licenza OFL", "size": 94756, "name": "FEBALCASA_Font-Testi_PlusJakartaSans.ttf"}], "folder": "FEBALCASA_Asset-di-brand"}, {"key": "catalogo", "label": "Foto catalogo", "desc": "Foto in alta risoluzione divise per area. Al download scegli l'originale HD o la versione LD web retina (2880 px, sRGB), creata al momento.", "items": [{"id": "c0", "kind": "photo", "hr": true, "folder": "cucina", "title": "Cucina Fusa, isola in rovere", "file": "fc/catalogo/CUCINA/FEBALCASA_Cucina-Fusa_isola_01.jpg", "thumb": "thumbs/FEBALCASA_Cucina-Fusa_isola_01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 403366, "name": "FEBALCASA_Cucina-Fusa_isola_01.jpg"}, {"id": "c1", "kind": "photo", "hr": true, "folder": "cucina", "title": "Cucina Fusa, finitura rosso Febal", "file": "fc/catalogo/CUCINA/FEBALCASA_Cucina-Fusa_rosso_02.jpg", "thumb": "thumbs/FEBALCASA_Cucina-Fusa_rosso_02.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 372979, "name": "FEBALCASA_Cucina-Fusa_rosso_02.jpg"}, {"id": "c2", "kind": "photo", "hr": true, "folder": "cucina", "title": "Cucina Fusa, colonne e dispensa", "file": "fc/catalogo/CUCINA/FEBALCASA_Cucina-Fusa_dispensa_03.jpg", "thumb": "thumbs/FEBALCASA_Cucina-Fusa_dispensa_03.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 345146, "name": "FEBALCASA_Cucina-Fusa_dispensa_03.jpg"}, {"id": "c3", "kind": "photo", "hr": true, "folder": "giorno", "title": "Giorno Morbido, libreria a giorno", "file": "fc/catalogo/GIORNO/FEBALCASA_Giorno-Morbido_libreria_01.jpg", "thumb": "thumbs/FEBALCASA_Giorno-Morbido_libreria_01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 451276, "name": "FEBALCASA_Giorno-Morbido_libreria_01.jpg"}, {"id": "c4", "kind": "photo", "hr": true, "folder": "giorno", "title": "Giorno Coda, tavolo e sedute", "file": "fc/catalogo/GIORNO/FEBALCASA_Giorno-Coda_tavolo_02.jpg", "thumb": "thumbs/FEBALCASA_Giorno-Coda_tavolo_02.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 354058, "name": "FEBALCASA_Giorno-Coda_tavolo_02.jpg"}, {"id": "c5", "kind": "photo", "hr": true, "folder": "giorno", "title": "Giorno Baffo, madia sospesa", "file": "fc/catalogo/GIORNO/FEBALCASA_Giorno-Baffo_madia_03.jpg", "thumb": "thumbs/FEBALCASA_Giorno-Baffo_madia_03.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 371151, "name": "FEBALCASA_Giorno-Baffo_madia_03.jpg"}, {"id": "c6", "kind": "photo", "hr": true, "folder": "notte", "title": "Notte Ronfante, letto imbottito", "file": "fc/catalogo/NOTTE/FEBALCASA_Notte-Ronfante_letto_01.jpg", "thumb": "thumbs/FEBALCASA_Notte-Ronfante_letto_01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 332629, "name": "FEBALCASA_Notte-Ronfante_letto_01.jpg"}, {"id": "c7", "kind": "photo", "hr": true, "folder": "notte", "title": "Notte Ronfante, comò e specchio", "file": "fc/catalogo/NOTTE/FEBALCASA_Notte-Ronfante_como_02.jpg", "thumb": "thumbs/FEBALCASA_Notte-Ronfante_como_02.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 358545, "name": "FEBALCASA_Notte-Ronfante_como_02.jpg"}, {"id": "c8", "kind": "photo", "hr": true, "folder": "armadi", "title": "Armadio Tana, ante battenti", "file": "fc/catalogo/ARMADI/FEBALCASA_Armadi-Tana_battente_01.jpg", "thumb": "thumbs/FEBALCASA_Armadi-Tana_battente_01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 341115, "name": "FEBALCASA_Armadi-Tana_battente_01.jpg"}, {"id": "c9", "kind": "photo", "hr": true, "folder": "armadi", "title": "Armadio Riflesso, ante scorrevoli a specchio", "file": "fc/catalogo/ARMADI/FEBALCASA_Armadi-Riflesso_scorrevole_02.jpg", "thumb": "thumbs/FEBALCASA_Armadi-Riflesso_scorrevole_02.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 412758, "name": "FEBALCASA_Armadi-Riflesso_scorrevole_02.jpg"}, {"id": "c10", "kind": "photo", "hr": true, "folder": "armadi", "title": "Cabina armadio Tana", "file": "fc/catalogo/ARMADI/FEBALCASA_Armadi-Tana_cabina_03.jpg", "thumb": "thumbs/FEBALCASA_Armadi-Tana_cabina_03.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 391707, "name": "FEBALCASA_Armadi-Tana_cabina_03.jpg"}, {"id": "c11", "kind": "photo", "hr": true, "folder": "sofas", "title": "Divano Morbido, tre posti", "file": "fc/catalogo/SOFAS/FEBALCASA_Sofas-Morbido_tre-posti_01.jpg", "thumb": "thumbs/FEBALCASA_Sofas-Morbido_tre-posti_01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 384597, "name": "FEBALCASA_Sofas-Morbido_tre-posti_01.jpg"}, {"id": "c12", "kind": "photo", "hr": true, "folder": "sofas", "title": "Divano Morbido, versione angolare", "file": "fc/catalogo/SOFAS/FEBALCASA_Sofas-Morbido_angolare_02.jpg", "thumb": "thumbs/FEBALCASA_Sofas-Morbido_angolare_02.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 342363, "name": "FEBALCASA_Sofas-Morbido_angolare_02.jpg"}, {"id": "c13", "kind": "photo", "hr": true, "folder": "sofas", "title": "Poltrona Gomitolo", "file": "fc/catalogo/SOFAS/FEBALCASA_Sofas-Gomitolo_poltrona_03.jpg", "thumb": "thumbs/FEBALCASA_Sofas-Gomitolo_poltrona_03.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 356608, "name": "FEBALCASA_Sofas-Gomitolo_poltrona_03.jpg"}], "folder": "FEBALCASA_Foto-catalogo", "folders": [{"key": "cucina", "label": "CUCINA"}, {"key": "giorno", "label": "GIORNO"}, {"key": "notte", "label": "NOTTE"}, {"key": "armadi", "label": "ARMADI"}, {"key": "sofas", "label": "SOFAS"}]}, {"key": "ped", "label": "Foto PED", "desc": "Post del piano editoriale, già pronti in bassa per i social.", "items": [{"id": "p0", "kind": "photo", "title": "Il custode della cucina", "file": "fc/ped/FEBALCASA_PED_Ott26_post01_custode.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post01_custode.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 73560, "name": "FEBALCASA_PED_Ott26_post01_custode.jpg"}, {"id": "p1", "kind": "photo", "title": "La siesta perfetta", "file": "fc/ped/FEBALCASA_PED_Ott26_post02_siesta.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post02_siesta.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 62315, "name": "FEBALCASA_PED_Ott26_post02_siesta.jpg"}, {"id": "p2", "kind": "photo", "title": "Buonanotte, design", "file": "fc/ped/FEBALCASA_PED_Ott26_post03_buonanotte.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post03_buonanotte.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 61578, "name": "FEBALCASA_PED_Ott26_post03_buonanotte.jpg"}, {"id": "p3", "kind": "photo", "title": "Colazione con vista", "file": "fc/ped/FEBALCASA_PED_Ott26_post04_colazione.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post04_colazione.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 78646, "name": "FEBALCASA_PED_Ott26_post04_colazione.jpg"}, {"id": "p4", "kind": "photo", "title": "Sotto il tavolo si sta meglio", "file": "fc/ped/FEBALCASA_PED_Ott26_post05_tavolo.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post05_tavolo.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 73887, "name": "FEBALCASA_PED_Ott26_post05_tavolo.jpg"}, {"id": "p5", "kind": "photo", "title": "Bentornati a casa", "file": "fc/ped/FEBALCASA_PED_Ott26_post06_bentornati.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post06_bentornati.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 68370, "name": "FEBALCASA_PED_Ott26_post06_bentornati.jpg"}], "folder": "FEBALCASA_Foto-PED"}, {"key": "cataloghi", "label": "Cataloghi PDF", "desc": "Cataloghi di collezione sfogliabili prima del download.", "items": [{"id": "k0", "kind": "pdf", "title": "Catalogo Cucine Fusa 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Cucine-Fusa_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-1.jpg", "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-2.jpg", "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 431383, "name": "FEBALCASA_Catalogo_Cucine-Fusa_2027.pdf"}, {"id": "k1", "kind": "pdf", "title": "Catalogo Living Morbido 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Living-Morbido_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Living-Morbido_2027-1.jpg", "pages/FEBALCASA_Catalogo_Living-Morbido_2027-2.jpg", "pages/FEBALCASA_Catalogo_Living-Morbido_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Living-Morbido_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 466899, "name": "FEBALCASA_Catalogo_Living-Morbido_2027.pdf"}, {"id": "k2", "kind": "pdf", "title": "Catalogo Notte Ronfante 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Notte-Ronfante_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-1.jpg", "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-2.jpg", "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 417305, "name": "FEBALCASA_Catalogo_Notte-Ronfante_2027.pdf"}], "folder": "FEBALCASA_Cataloghi-PDF"}]}};
+const DATA = {"febalcasa": {"sections": [{"key": "brand", "label": "Asset di brand", "desc": "Brand manual, tone of voice, logo e font ufficiali.", "items": [{"id": "bm", "kind": "pdf", "title": "Brand manual gattini", "file": "fc/brand/FEBALCASA_Brand-Manual-Gattini_2026.pdf", "pages": ["pages/FEBALCASA_Brand-Manual-Gattini_2026-1.jpg", "pages/FEBALCASA_Brand-Manual-Gattini_2026-2.jpg", "pages/FEBALCASA_Brand-Manual-Gattini_2026-3.jpg"], "note": "3 pagine · A4 orizzontale", "thumb": "pages/FEBALCASA_Brand-Manual-Gattini_2026-1.jpg", "size": 81381, "name": "FEBALCASA_Brand-Manual-Gattini_2026.pdf"}, {"id": "tov", "kind": "pdf", "title": "Tone of voice miagolante", "file": "fc/brand/FEBALCASA_Tone-of-Voice-Miagolante_2026.pdf", "pages": ["pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-1.jpg", "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-2.jpg", "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-3.jpg"], "note": "3 pagine · A4 orizzontale", "thumb": "pages/FEBALCASA_Tone-of-Voice-Miagolante_2026-1.jpg", "size": 63040, "name": "FEBALCASA_Tone-of-Voice-Miagolante_2026.pdf"}, {"id": "logo1", "kind": "logo", "title": "Logo Febal Casa, quadrato rosso", "file": "fc/brand/logo_febal_casa.png", "thumb": "fc/brand/logo_febal_casa.png", "note": "PNG trasparente", "bg": "#ffffff", "size": 38679, "name": "logo_febal_casa.png"}, {"id": "logo2", "kind": "logo", "title": "Logo Febal Casa, bianco su rosso", "file": "fc/brand/logo_febal_casa_bianco.png", "thumb": "fc/brand/logo_febal_casa_bianco.png", "note": "PNG trasparente, per fondi rossi", "bg": "#E30513", "size": 30882, "name": "logo_febal_casa_bianco.png"}, {"id": "f1", "kind": "font", "title": "Font titoli, Newsreader 60pt", "file": "fc/brand/FEBALCASA_Font-Titoli_Newsreader-60pt.ttf", "thumb": "thumbs/FEBALCASA_Font-Titoli_Newsreader-60pt.jpg", "note": "TTF · licenza OFL", "size": 116860, "name": "FEBALCASA_Font-Titoli_Newsreader-60pt.ttf"}, {"id": "f2", "kind": "font", "title": "Font testi, Plus Jakarta Sans", "file": "fc/brand/FEBALCASA_Font-Testi_PlusJakartaSans.ttf", "thumb": "thumbs/FEBALCASA_Font-Testi_PlusJakartaSans.jpg", "note": "TTF · licenza OFL", "size": 94756, "name": "FEBALCASA_Font-Testi_PlusJakartaSans.ttf"}], "folder": "FEBALCASA_Asset-di-brand"}, {"key": "catalogo", "label": "Foto catalogo", "desc": "Foto in alta risoluzione divise per area e per modello. Al download scegli l'originale HD o la versione LD web retina (2880 px, sRGB), creata al momento.", "items": [{"id": "c0", "kind": "photo", "hr": true, "path": ["CUCINA", "Italiana_2026"], "title": "FC_ITA_P04-05.jpg", "file": "fc/catalogo/CUCINA/Italiana_2026/FC_ITA_P04-05.jpg", "thumb": "thumbs/cat/t00.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 241647, "name": "FC_ITA_P04-05.jpg"}, {"id": "c1", "kind": "photo", "hr": true, "path": ["CUCINA", "Italiana_2026"], "title": "FC_ITA_P06.jpg", "file": "fc/catalogo/CUCINA/Italiana_2026/FC_ITA_P06.jpg", "thumb": "thumbs/cat/t01.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 213421, "name": "FC_ITA_P06.jpg"}, {"id": "c2", "kind": "photo", "hr": true, "path": ["CUCINA", "Italiana_2026"], "title": "FC_ITA_P08-09.jpg", "file": "fc/catalogo/CUCINA/Italiana_2026/FC_ITA_P08-09.jpg", "thumb": "thumbs/cat/t02.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 206740, "name": "FC_ITA_P08-09.jpg"}, {"id": "c3", "kind": "photo", "hr": true, "path": ["CUCINA", "Italiana_2026"], "title": "FC_ITA_P10.jpg", "file": "fc/catalogo/CUCINA/Italiana_2026/FC_ITA_P10.jpg", "thumb": "thumbs/cat/t03.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 218969, "name": "FC_ITA_P10.jpg"}, {"id": "c4", "kind": "photo", "hr": true, "path": ["CUCINA", "Italiana_2026"], "title": "FC_ITA_P11.jpg", "file": "fc/catalogo/CUCINA/Italiana_2026/FC_ITA_P11.jpg", "thumb": "thumbs/cat/t04.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 223631, "name": "FC_ITA_P11.jpg"}, {"id": "c5", "kind": "photo", "hr": true, "path": ["CUCINA", "Italiana_2026"], "title": "FC_ITA_P100-101.jpg", "file": "fc/catalogo/CUCINA/Italiana_2026/FC_ITA_P100-101.jpg", "thumb": "thumbs/cat/t05.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 176570, "name": "FC_ITA_P100-101.jpg"}, {"id": "c6", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula"], "title": "Modula1_pag 19.jpg", "file": "fc/catalogo/CUCINA/Modula/Modula1_pag 19.jpg", "thumb": "thumbs/cat/t06.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 239501, "name": "Modula1_pag 19.jpg"}, {"id": "c7", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula"], "title": "Modula1_pag 20-21.jpg", "file": "fc/catalogo/CUCINA/Modula/Modula1_pag 20-21.jpg", "thumb": "thumbs/cat/t07.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 241431, "name": "Modula1_pag 20-21.jpg"}, {"id": "c8", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula"], "title": "Modula1_pag 27a.jpg", "file": "fc/catalogo/CUCINA/Modula/Modula1_pag 27a.jpg", "thumb": "thumbs/cat/t08.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 230994, "name": "Modula1_pag 27a.jpg"}, {"id": "c9", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula"], "title": "Modula1_pag 27b.jpg", "file": "fc/catalogo/CUCINA/Modula/Modula1_pag 27b.jpg", "thumb": "thumbs/cat/t09.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 187498, "name": "Modula1_pag 27b.jpg"}, {"id": "c10", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula"], "title": "Modula10_pag 147.jpg", "file": "fc/catalogo/CUCINA/Modula/Modula10_pag 147.jpg", "thumb": "thumbs/cat/t10.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 217640, "name": "Modula10_pag 147.jpg"}, {"id": "c11", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula", "MODULA ANTA SAGOMA J"], "title": "Modula_anta-sagoma-J_01.jpg", "file": "fc/catalogo/CUCINA/Modula/MODULA ANTA SAGOMA J/Modula_anta-sagoma-J_01.jpg", "thumb": "thumbs/cat/t11.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 180599, "name": "Modula_anta-sagoma-J_01.jpg"}, {"id": "c12", "kind": "photo", "hr": true, "path": ["CUCINA", "Modula", "MODULA ANTA SAGOMA J"], "title": "Modula_anta-sagoma-J_02.jpg", "file": "fc/catalogo/CUCINA/Modula/MODULA ANTA SAGOMA J/Modula_anta-sagoma-J_02.jpg", "thumb": "thumbs/cat/t12.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 211279, "name": "Modula_anta-sagoma-J_02.jpg"}, {"id": "c13", "kind": "photo", "hr": true, "path": ["GIORNO"], "title": "Morbido_pag 12.jpg", "file": "fc/catalogo/GIORNO/Morbido_pag 12.jpg", "thumb": "thumbs/cat/t13.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 290906, "name": "Morbido_pag 12.jpg"}, {"id": "c14", "kind": "photo", "hr": true, "path": ["GIORNO"], "title": "Coda_pag 30-31.jpg", "file": "fc/catalogo/GIORNO/Coda_pag 30-31.jpg", "thumb": "thumbs/cat/t14.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 203012, "name": "Coda_pag 30-31.jpg"}, {"id": "c15", "kind": "photo", "hr": true, "path": ["GIORNO"], "title": "Baffo_pag 44.jpg", "file": "fc/catalogo/GIORNO/Baffo_pag 44.jpg", "thumb": "thumbs/cat/t15.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 236946, "name": "Baffo_pag 44.jpg"}, {"id": "c16", "kind": "photo", "hr": true, "path": ["NOTTE", "Ronfante_2026"], "title": "FC_RON_P22-23.jpg", "file": "fc/catalogo/NOTTE/Ronfante_2026/FC_RON_P22-23.jpg", "thumb": "thumbs/cat/t16.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 190556, "name": "FC_RON_P22-23.jpg"}, {"id": "c17", "kind": "photo", "hr": true, "path": ["NOTTE", "Ronfante_2026"], "title": "FC_RON_P24.jpg", "file": "fc/catalogo/NOTTE/Ronfante_2026/FC_RON_P24.jpg", "thumb": "thumbs/cat/t17.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 230980, "name": "FC_RON_P24.jpg"}, {"id": "c18", "kind": "photo", "hr": true, "path": ["ARMADI"], "title": "Tana_pag 60-61.jpg", "file": "fc/catalogo/ARMADI/Tana_pag 60-61.jpg", "thumb": "thumbs/cat/t18.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 200775, "name": "Tana_pag 60-61.jpg"}, {"id": "c19", "kind": "photo", "hr": true, "path": ["ARMADI"], "title": "Riflesso_pag 66.jpg", "file": "fc/catalogo/ARMADI/Riflesso_pag 66.jpg", "thumb": "thumbs/cat/t19.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 255756, "name": "Riflesso_pag 66.jpg"}, {"id": "c20", "kind": "photo", "hr": true, "path": ["ARMADI"], "title": "Tana_pag 70.jpg", "file": "fc/catalogo/ARMADI/Tana_pag 70.jpg", "thumb": "thumbs/cat/t20.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 254304, "name": "Tana_pag 70.jpg"}, {"id": "c21", "kind": "photo", "hr": true, "path": ["SOFAS", "Catalogo_Sofas_2026"], "title": "Foto pagina 12.jpg", "file": "fc/catalogo/SOFAS/Catalogo_Sofas_2026/Foto pagina 12.jpg", "thumb": "thumbs/cat/t21.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 248108, "name": "Foto pagina 12.jpg"}, {"id": "c22", "kind": "photo", "hr": true, "path": ["SOFAS", "Catalogo_Sofas_2026"], "title": "Foto pagina 30-31.jpg", "file": "fc/catalogo/SOFAS/Catalogo_Sofas_2026/Foto pagina 30-31.jpg", "thumb": "thumbs/cat/t22.jpg", "w": 6000, "h": 3000, "dpi": 300, "size": 211932, "name": "Foto pagina 30-31.jpg"}, {"id": "c23", "kind": "photo", "hr": true, "path": ["SOFAS", "Catalogo_Sofas_2026"], "title": "Foto pagina 48.jpg", "file": "fc/catalogo/SOFAS/Catalogo_Sofas_2026/Foto pagina 48.jpg", "thumb": "thumbs/cat/t23.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 222917, "name": "Foto pagina 48.jpg"}, {"id": "c24", "kind": "photo", "hr": true, "path": ["SOFAS", "Catalogo_Sofas_2026"], "title": "Foto pagina 52.jpg", "file": "fc/catalogo/SOFAS/Catalogo_Sofas_2026/Foto pagina 52.jpg", "thumb": "thumbs/cat/t24.jpg", "w": 4500, "h": 3000, "dpi": 300, "size": 174225, "name": "Foto pagina 52.jpg"}], "folder": "FEBALCASA_Foto-catalogo"}, {"key": "ped", "label": "Foto PED", "desc": "Post del piano editoriale, già pronti in bassa per i social.", "items": [{"id": "p0", "kind": "photo", "title": "Il custode della cucina", "file": "fc/ped/FEBALCASA_PED_Ott26_post01_custode.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post01_custode.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 73560, "name": "FEBALCASA_PED_Ott26_post01_custode.jpg"}, {"id": "p1", "kind": "photo", "title": "La siesta perfetta", "file": "fc/ped/FEBALCASA_PED_Ott26_post02_siesta.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post02_siesta.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 62315, "name": "FEBALCASA_PED_Ott26_post02_siesta.jpg"}, {"id": "p2", "kind": "photo", "title": "Buonanotte, design", "file": "fc/ped/FEBALCASA_PED_Ott26_post03_buonanotte.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post03_buonanotte.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 61578, "name": "FEBALCASA_PED_Ott26_post03_buonanotte.jpg"}, {"id": "p3", "kind": "photo", "title": "Colazione con vista", "file": "fc/ped/FEBALCASA_PED_Ott26_post04_colazione.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post04_colazione.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 78646, "name": "FEBALCASA_PED_Ott26_post04_colazione.jpg"}, {"id": "p4", "kind": "photo", "title": "Sotto il tavolo si sta meglio", "file": "fc/ped/FEBALCASA_PED_Ott26_post05_tavolo.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post05_tavolo.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 73887, "name": "FEBALCASA_PED_Ott26_post05_tavolo.jpg"}, {"id": "p5", "kind": "photo", "title": "Bentornati a casa", "file": "fc/ped/FEBALCASA_PED_Ott26_post06_bentornati.jpg", "thumb": "thumbs/FEBALCASA_PED_Ott26_post06_bentornati.jpg", "w": 1080, "h": 1350, "dpi": 72, "note": "Post social 4:5, già in bassa", "size": 68370, "name": "FEBALCASA_PED_Ott26_post06_bentornati.jpg"}], "folder": "FEBALCASA_Foto-PED"}, {"key": "cataloghi", "label": "Cataloghi PDF", "desc": "Cataloghi di collezione sfogliabili prima del download.", "items": [{"id": "k0", "kind": "pdf", "title": "Catalogo Cucine Fusa 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Cucine-Fusa_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-1.jpg", "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-2.jpg", "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Cucine-Fusa_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 431383, "name": "FEBALCASA_Catalogo_Cucine-Fusa_2027.pdf"}, {"id": "k1", "kind": "pdf", "title": "Catalogo Living Morbido 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Living-Morbido_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Living-Morbido_2027-1.jpg", "pages/FEBALCASA_Catalogo_Living-Morbido_2027-2.jpg", "pages/FEBALCASA_Catalogo_Living-Morbido_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Living-Morbido_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 466899, "name": "FEBALCASA_Catalogo_Living-Morbido_2027.pdf"}, {"id": "k2", "kind": "pdf", "title": "Catalogo Notte Ronfante 2027", "file": "fc/pdf/FEBALCASA_Catalogo_Notte-Ronfante_2027.pdf", "pages": ["pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-1.jpg", "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-2.jpg", "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-3.jpg"], "thumb": "pages/FEBALCASA_Catalogo_Notte-Ronfante_2027-1.jpg", "note": "3 pagine · A4 orizzontale", "size": 417305, "name": "FEBALCASA_Catalogo_Notte-Ronfante_2027.pdf"}], "folder": "FEBALCASA_Cataloghi-PDF"}]}};
 const HOSTED = !/claudeusercontent|claude\.ai/.test(location.hostname) && location.protocol.startsWith("http");
 const ARTIFACT_URL = HOSTED ? location.origin + location.pathname : "https://claude.ai/artifact/BGGMc6ZR96wym6CCwnLvWf";
 const BRANDS = [
@@ -203,7 +212,7 @@ const PROFILES = [
   {token:"fc-accesso-k7m2", label:"Agente Febal Casa", sees:"Solo Febal Casa, senza accesso al gruppo", brands:["febalcasa"], solo:"febalcasa"},
 ];
 
-const state = {profile: PROFILES[0], brand:null, section:"brand", folder:null, sel:new Set(), viewer:null, share:null, list:[]};
+const state = {profile: PROFILES[0], brand:null, section:"brand", path:[], q:"", sel:new Set(), viewer:null, share:null, list:[]};
 const $ = (s, el=document) => el.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmtSize = b => b > 1048576 ? (b/1048576).toFixed(1).replace(".",",")+" MB" : Math.round(b/1024)+" KB";
@@ -285,21 +294,27 @@ function curSection(){ return DATA.febalcasa.sections.find(s=>s.key===state.sect
 function allItems(){ return DATA.febalcasa.sections.flatMap(s=>s.items.map(it=>Object.assign(it,{_sec:s.key}))); }
 function find(id){ return allItems().find(i=>i.id===id); }
 function secOf(key){ return DATA.febalcasa.sections.find(s=>s.key===key); }
-function folderLabel(s,f){ const x=(s.folders||[]).find(x=>x.key===f); return x?x.label:f; }
+const segKey = t => t.toLowerCase().normalize("NFD").replace(/[^a-z0-9]/g,"");
+function itemsUnder(s,path){ return s.items.filter(i=>i.path && path.every((p,k)=>i.path[k]===p)); }
+function isTree(s){ return s.items.some(i=>i.path); }
 
 /* ---------- condivisione: il token contiene ambito, scadenza e permesso ---------- */
 // cond_<ambito>_<scadenza AAAAMMGG | sempre>_<d = vede e scarica | v = solo vede>
-// ambito: sez-<sezione> | sez-<sezione>-<sottocartella> | file-<id>.<id>...
+// ambito: sez-<sezione> | sez-<sezione>-<cartella~sottocartella> | file-<id>.<id>...
 function makeToken(scope, days, perm){
   let exp="sempre";
   if (days!=="0"){ const d=new Date(); d.setDate(d.getDate()+Number(days)); exp=d.toISOString().slice(0,10).replace(/-/g,""); }
   return `cond_${scope}_${exp}_${perm}`;
 }
 function parseToken(h){
-  const m=/^cond_([a-z0-9.-]+)_(sempre|\d{8})_([dv])$/.exec(h); if(!m) return null;
-  const sc=m[1].split("-"); let share={exp:m[2], perm:m[3], token:h};
-  if (sc[0]==="sez"){ share.section=sc[1]; share.folder=sc[2]||null; if(!secOf(share.section)) return null; }
-  else if (sc[0]==="file"){ share.ids=sc.slice(1).join("-").split("."); if(!share.ids.every(find)) return null; }
+  const m=/^cond_([a-z0-9.~-]+)_(sempre|\d{8})_([dv])$/.exec(h); if(!m) return null;
+  const sc=m[1].split("-"); let share={exp:m[2], perm:m[3], token:h, path:[]};
+  if (sc[0]==="sez"){
+    share.section=sc[1]; const s=secOf(share.section); if(!s) return null;
+    const keys=sc.slice(2).join("-"); if (keys){
+      for (const k of keys.split("~")){ const seg=[...new Set(itemsUnder(s,share.path).filter(i=>i.path.length>share.path.length).map(i=>i.path[share.path.length]))].find(x=>segKey(x)===k); if(!seg) return null; share.path.push(seg); }
+    }
+  } else if (sc[0]==="file"){ share.ids=sc.slice(1).join("-").split("."); if(!share.ids.every(find)) return null; }
   else return null;
   return share;
 }
@@ -307,7 +322,12 @@ function expDate(exp){ return exp==="sempre"?null:new Date(+exp.slice(0,4), +exp
 function fmtDate(d){ return d.toLocaleDateString("it-IT",{day:"numeric",month:"long",year:"numeric"}); }
 function shareLabel(sh){
   if (sh.ids) return sh.ids.length===1 ? find(sh.ids[0]).title : `${sh.ids.length} file selezionati`;
-  const s=secOf(sh.section); return s.label + (sh.folder?" / "+folderLabel(s,sh.folder):" (tutte le sottocartelle)");
+  const s=secOf(sh.section); return [s.label,...sh.path].join(" / ") + (isTree(s)&&!sh.path.length?" (tutte le cartelle)":"");
+}
+function sharedItems(){
+  const sh=state.share; if(!sh) return allItems();
+  if (sh.ids) return sh.ids.map(find);
+  const s=secOf(sh.section); return isTree(s) ? itemsUnder(s,sh.path) : s.items;
 }
 
 function openShare(scope, what){
@@ -328,16 +348,69 @@ function openShare(scope, what){
     const days=$("#shExp").value, perm=new FormData(e.target).get("perm");
     const tok=makeToken(scope, days, perm); const link=linkFor(tok);
     $("#shLink").textContent=link; $("#shOut").hidden=false; $("#shOpen").hidden=false; $("#shGo").textContent="Rigenera link";
-    const ed=expDate(tok.split("_")[2]);
+    const ed=expDate(tok.split("_").slice(-2)[0]);
     $("#shNote").textContent = (ed?`Valido fino al ${fmtDate(ed)}`:"Senza scadenza") + (perm==="v"?" · solo visualizzazione":" · visualizzazione e download") + ". Nella demo il link è simulato: sul server interno la protezione la applica il server.";
     $("#shCopy").onclick=()=>copyText(link, $("#shCopy"));
     $("#shOpen").onclick=()=>{ d.close(); go(tok); };
   };
 }
 
+/* ---------- ricerca: legge nomi di cartelle e file, riconosce le pagine ---------- */
+const STOP=new Set("pagina pagine pag pg p foto del della dello dei delle di da la il lo le i gli un una e in nel nella per mi serve cerco trova trovami".split(" "));
+function words(str){ return str.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/([a-z])(\d)/g,"$1 $2").replace(/(\d)([a-z])/g,"$1 $2").split(/[^a-z0-9]+/).filter(Boolean); }
+function pagesOf(name){
+  const out=[]; const re=/(?:^|[_\s-])(?:p|pag|pagina|pg)\.?\s*(\d{1,3})(?:\s*-\s*(\d{1,3}))?[a-z]?(?=$|[_\s.-])/gi; let m;
+  const base=name.replace(/\.[a-z0-9]+$/i,"");
+  while((m=re.exec(base))){ const a=+m[1], b=m[2]?+m[2]:a; for(let n=a;n<=b && n-a<10;n++) out.push(n); }
+  return out;
+}
+function indexOf(it){
+  if (it._ix) return it._ix;
+  const sec=secOf(it._sec);
+  const fileW=words(it.name.replace(/\.[a-z0-9]+$/i,""));
+  const all=words(["febal casa", sec.label, ...(it.path||[]), it.name.replace(/\.[a-z0-9]+$/i,""), it.path?"":it.title].join(" "));
+  return it._ix={all, fileW, nums:new Set(all.filter(w=>/^\d+$/.test(w)).map(w=>String(+w))), pages:pagesOf(it.name)};
+}
+function search(q){
+  const toks=words(q).filter(t=>!STOP.has(t)); if(!toks.length) return null;
+  const res=[];
+  for (const it of sharedItems()){
+    const ix=indexOf(it); let score=0, ok=true;
+    for (const t of toks){
+      if (/^\d+$/.test(t)){ const n=+t; if (ix.pages.includes(n)) score+=10; else if (ix.nums.has(String(n))) score+=1; else { ok=false; break; } }
+      else { const st=t.length>5?t.slice(0,-1):t; if (ix.fileW.some(w=>w.startsWith(st))) score+=3; else if (ix.all.some(w=>w.startsWith(st))) score+=1; else { ok=false; break; } }
+    }
+    if (ok) res.push([score,it]);
+  }
+  return res.sort((a,b)=>b[0]-a[0] || a[1].name.localeCompare(b[1].name,"it",{numeric:true})).map(x=>x[1]);
+}
+const EXAMPLES=["sofas 48","italiana 5","modula 147","pagina 27","italiana 100"];
+function searchBox(){
+  return `<div class="search"><label for="q" class="eyebrow">Cerca un file</label>
+    <input id="q" type="search" autocomplete="off" placeholder="Modello, cartella o pagina, es. sofas 48" value="${esc(state.q||"")}">
+    ${state.share?"":`<div class="examples"><span>Prova:</span>${EXAMPLES.map(e=>`<button type="button" data-ex="${e}">${e}</button>`).join("")}</div>`}</div>`;
+}
+function bindSearch(){
+  const q=$("#q"); if(!q) return; let t;
+  q.oninput=()=>{ clearTimeout(t); t=setTimeout(()=>{ state.q=q.value; runSearch(); },160); };
+  document.querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{ q.value=b.dataset.ex; state.q=q.value; runSearch(); });
+}
+function runSearch(){
+  const res = state.q ? search(state.q) : null;
+  document.querySelectorAll("[data-sec]").forEach(x=>x.setAttribute("aria-selected", !res && x.dataset.sec===state.section));
+  if (!res){ if (state.share && state.share.ids) renderList(sharedItems(), {title:"File condivisi"}); else renderSection(); return; }
+  state.sel.clear();
+  if (!res.length){
+    $("#secwrap").innerHTML = `<div class="sec-intro"><div><h2>Nessun risultato per “${esc(state.q)}”</h2>
+      <p>La ricerca guarda i nomi di cartelle e file e riconosce i numeri di pagina (P04-05, pag 20-21, pagina 48). Per cercare per contenuto, ad esempio "divano verde con il gatto", servirà l'assistente AI previsto come sviluppo futuro.</p></div></div>`;
+    state.list=[]; return;
+  }
+  renderList(res, {title:`Risultati per “${state.q}”`, desc:`${res.length} file trovat${res.length===1?"o":"i"}. Clicca sul percorso per aprire la cartella.`, zipName:"FEBALCASA_Ricerca", shareable:!state.share, showPath:true, folderAll:res, allLabel:`Scarica tutti (${res.length})`, noFolderShare:true});
+}
+
 /* ---------- pagine brand ---------- */
 function openBrand(key, solo){
-  state.brand=key; state.sel.clear(); state.share=null; document.body.classList.remove("viewonly");
+  state.brand=key; state.sel.clear(); state.share=null; state.q=""; state.path=[]; document.body.classList.remove("viewonly");
   if (key!=="febalcasa"){ renderSoon(key); return; }
   renderFebal(solo);
 }
@@ -349,7 +422,6 @@ function renderSoon(key){
     <button class="btn-sm solid" id="back">Torna al gruppo</button></div></div>`;
   bindDemo($("#app")); $("#back").onclick=()=>go(state.profile.token);
 }
-
 function fcShell(top, solo){
   return `<div class="fc"><div class="fc-top"><div class="wrap">
       <div class="fc-bar"><span class="crumb">${solo?'<span>Febal Casa</span>':'<button id="toGroup">Colombini Group</button><span>/</span><span>Febal Casa</span>'}</span><span>Repository 2026</span></div>
@@ -360,16 +432,17 @@ function renderFebal(solo){
   $("#app").innerHTML = demoBar() + (solo?`<div class="solo-note"><div class="wrap">Vista agente: questo link apre solo Febal Casa. Il gruppo e gli altri brand non sono raggiungibili.</div></div>`:"") + fcShell(`
       <div class="fc-hero"><div><h1>Repository Febal Casa</h1><p>Asset di brand, foto catalogo, foto del piano editoriale e cataloghi. Contenuti di prova: in ogni casa c'è un gattino.</p></div>
         <img src="fc/brand/logo_febal_casa.png" alt="Febal Casa"></div>
+      ${searchBox()}
       <div class="tabs" role="tablist">${secs.map(s=>`<button class="tab" role="tab" data-sec="${s.key}" aria-selected="${s.key===state.section}">${esc(s.label)}<span class="n">${s.items.length}</span></button>`).join("")}</div>`, solo);
-  bindDemo($("#app"));
+  bindDemo($("#app")); bindSearch();
   const tg=$("#toGroup"); if (tg) tg.onclick=()=>go(state.profile.token);
-  $("#app").querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>{ state.section=b.dataset.sec; state.folder=null; state.sel.clear(); $("#app").querySelectorAll("[data-sec]").forEach(x=>x.setAttribute("aria-selected", x===b)); renderSection(); });
-  renderSection(); window.scrollTo(0,0);
+  $("#app").querySelectorAll("[data-sec]").forEach(b=>b.onclick=()=>{ state.section=b.dataset.sec; state.path=[]; state.sel.clear(); state.q=""; $("#q").value=""; $("#app").querySelectorAll("[data-sec]").forEach(x=>x.setAttribute("aria-selected", x===b)); renderSection(); });
+  state.q ? runSearch() : renderSection(); window.scrollTo(0,0);
 }
 
 /* ---------- vista condivisa ---------- */
 function renderShared(sh){
-  state.share=sh; state.brand="febalcasa"; state.sel.clear();
+  state.share=sh; state.brand="febalcasa"; state.sel.clear(); state.q="";
   const ed=expDate(sh.exp); const expired = ed && ed < new Date();
   document.body.classList.toggle("viewonly", sh.perm==="v");
   const bar = `<div class="demobar"><div class="wrap"><span><strong>Demo</strong>: stai vedendo un link condiviso, come lo vedrebbe chi lo riceve.</span><span class="who"><button class="chip" id="exitShare">Esci dalla vista condivisa</button></span></div></div>`;
@@ -378,16 +451,17 @@ function renderShared(sh){
     $("#exitShare").onclick=()=>go(state.profile.token); return;
   }
   const meta = (ed?`Valido fino al ${fmtDate(ed)}`:"Senza scadenza") + " · " + (sh.perm==="v"?"Solo visualizzazione":"Visualizzazione e download");
+  const many = sh.ids ? sh.ids.length>1 : true;
   $("#app").innerHTML = bar + fcShell(`
       <div class="fc-hero"><div><span class="eyebrow" style="color:var(--fc-grey)">Condiviso con te da Febal Casa</span><h1>${esc(shareLabel(sh))}</h1><p class="sharemeta">${esc(meta)}</p></div>
-        <img src="fc/brand/logo_febal_casa.png" alt="Febal Casa"></div>`, true);
-  $("#exitShare").onclick=()=>go(state.profile.token);
-  if (sh.ids){ state.section=find(sh.ids[0])._sec; state.folder=null; renderList(sh.ids.map(find), {title:"File condivisi", desc:"", zipName:"FEBALCASA_File-condivisi", shareable:false}); }
-  else { state.section=sh.section; state.folder=sh.folder; renderSection(); }
+        <img src="fc/brand/logo_febal_casa.png" alt="Febal Casa"></div>${many?searchBox():""}`, true);
+  $("#exitShare").onclick=()=>go(state.profile.token); bindSearch();
+  if (sh.ids){ state.section=find(sh.ids[0])._sec; state.path=[]; renderList(sh.ids.map(find), {title:"File condivisi"}); }
+  else { state.section=sh.section; state.path=sh.path.slice(); renderSection(); }
   window.scrollTo(0,0);
 }
 
-/* ---------- sezioni, sottocartelle, elenco file ---------- */
+/* ---------- sezioni, cartelle a più livelli, elenco file ---------- */
 function specLine(it){
   if (it.kind==="photo") return `${it.w} × ${it.h} px · ${it.dpi} dpi · ${fmtSize(it.size)}`;
   return `${it.note||""} · ${fmtSize(it.size)}`;
@@ -396,67 +470,73 @@ function kindLabel(it){ return {photo: it.hr?"JPG HD":"JPG social", pdf:"PDF", l
 
 function renderSection(){
   const s=curSection();
-  const sharedRootFolder = state.share && state.share.folder; // condivisa una sola sottocartella
-  if (s.folders && !state.folder){ renderFolders(s); return; }
-  const items = s.folders ? s.items.filter(i=>i.folder===state.folder) : s.items;
-  const crumb = s.folders && !sharedRootFolder ? `<nav class="fcrumb"><button id="upFolder">${esc(s.label)}</button><span>/</span><b>${esc(folderLabel(s,state.folder))}</b></nav>` : "";
-  renderList(items, {
-    title: s.folders ? folderLabel(s,state.folder) : s.label,
-    desc: s.desc, crumb,
-    zipName: s.folder + (s.folders?"_"+folderLabel(s,state.folder):""),
-    shareScope: `sez-${s.key}` + (s.folders?"-"+state.folder:""),
-    shareWhat: s.label + (s.folders?" / "+folderLabel(s,state.folder):""),
-    shareable: !state.share, tall: s.key==="ped"
-  });
-  const up=$("#upFolder"); if (up) up.onclick=()=>{ state.folder=null; state.sel.clear(); renderSection(); };
-}
-
-function renderFolders(s){
-  const w=$("#secwrap");
-  w.innerHTML = `
-    <div class="sec-intro"><div><h2>${esc(s.label)}</h2><p>${esc(s.desc)}</p></div>
-      <div class="toolbar">${state.share?"":`<button class="tbtn" id="shSec">Condividi ${esc(s.label)}</button>`}
-        <button class="tbtn primary dlonly" id="dlAll">Scarica tutto (${s.items.length})</button></div></div>
-    <div class="folders">${s.folders.map(f=>{ const its=s.items.filter(i=>i.folder===f.key); return `
+  if (!isTree(s)){ renderList(s.items,{title:s.label,desc:s.desc,zipName:s.folder,shareScope:`sez-${s.key}`,shareWhat:s.label,shareable:!state.share,tall:s.key==="ped",folderAll:s.items}); return; }
+  const root=(state.share&&state.share.path)||[]; const path=state.path||[];
+  const under=itemsUnder(s,path);
+  const subs=[...new Set(under.filter(i=>i.path.length>path.length).map(i=>i.path[path.length]))];
+  const files=under.filter(i=>i.path.length===path.length);
+  let crumb="";
+  if (path.length>root.length){
+    const parts=[{label: root.length?root[root.length-1]:s.label, depth:root.length}].concat(path.slice(root.length).map((p,k)=>({label:p, depth:root.length+k+1})));
+    crumb=`<nav class="fcrumb">${parts.map((p,k)=>k===parts.length-1?`<b>${esc(p.label)}</b>`:`<button data-up="${p.depth}">${esc(p.label)}</button><span>/</span>`).join("")}</nav>`;
+  }
+  const foldersHtml = subs.length ? `<div class="folders">${subs.map((f,k)=>{ const its=itemsUnder(s,[...path,f]); return `
       <article class="fold">
-        <button class="fcover" data-folder="${f.key}" aria-label="Apri ${esc(f.label)}">${its.slice(0,3).map(i=>`<img loading="lazy" src="${i.thumb}" alt="">`).join("")}</button>
-        <div class="finfo"><div><b>${esc(f.label)}</b><span>${its.length} foto</span></div>
-          <div class="row-actions"><button data-folder="${f.key}">Apri</button>${state.share?"":`<button data-shf="${f.key}">Condividi</button>`}<button class="dlonly" data-dlf="${f.key}">Scarica</button></div></div>
-      </article>`; }).join("")}</div>`;
-  w.querySelectorAll("[data-folder]").forEach(b=>b.onclick=()=>{ state.folder=b.dataset.folder; state.sel.clear(); renderSection(); window.scrollTo({top:0}); });
-  w.querySelectorAll("[data-shf]").forEach(b=>b.onclick=()=>openShare(`sez-${s.key}-${b.dataset.shf}`, `${s.label} / ${folderLabel(s,b.dataset.shf)}`));
-  w.querySelectorAll("[data-dlf]").forEach(b=>b.onclick=()=>startDownload(s.items.filter(i=>i.folder===b.dataset.dlf), "zip-all", s.folder+"_"+folderLabel(s,b.dataset.dlf)));
-  const sh=$("#shSec"); if (sh) sh.onclick=()=>openShare(`sez-${s.key}`, `${s.label}, con tutte le sottocartelle`);
-  $("#dlAll").onclick=()=>startDownload(s.items, "zip-all", s.folder, true);
+        <button class="fcover" data-folder="${k}" aria-label="Apri ${esc(f)}">${its.slice(0,3).map(i=>`<img loading="lazy" src="${i.thumb}" alt="">`).join("")}</button>
+        <div class="finfo"><div><b>${esc(f)}</b><span>${its.length} file</span></div>
+          <div class="row-actions"><button data-folder="${k}">Apri</button>${state.share?"":`<button data-shf="${k}">Condividi</button>`}<button class="dlonly" data-dlf="${k}">Scarica</button></div></div>
+      </article>`; }).join("")}</div>` : "";
+  const scopeOf=p=>`sez-${s.key}`+(p.length?"-"+p.map(segKey).join("~"):"");
+  renderList(files, {
+    title: path.length?path[path.length-1]:s.label,
+    desc: path.length?`${under.length} file in questa cartella${subs.length?" e nelle sottocartelle":""}`:s.desc,
+    crumb, foldersHtml, zipName: s.folder+(path.length?"_"+path.join("_"):""),
+    shareScope: scopeOf(path), shareWhat: [s.label,...path].join(" / ") + (path.length||!subs.length?"":", con tutte le cartelle"),
+    shareable: !state.share, folderAll: under, base: path,
+    onBound: w=>{
+      w.querySelectorAll("[data-up]").forEach(b=>b.onclick=()=>{ state.path=path.slice(0,+b.dataset.up); state.sel.clear(); renderSection(); });
+      w.querySelectorAll("[data-folder]").forEach(b=>b.onclick=()=>{ state.path=[...path, subs[+b.dataset.folder]]; state.sel.clear(); renderSection(); window.scrollTo({top:0}); });
+      w.querySelectorAll("[data-shf]").forEach(b=>{ const p=[...path, subs[+b.dataset.shf]]; b.onclick=()=>openShare(scopeOf(p), [s.label,...p].join(" / ")); });
+      w.querySelectorAll("[data-dlf]").forEach(b=>{ const p=[...path, subs[+b.dataset.dlf]]; b.onclick=()=>startDownload(itemsUnder(s,p), "zip-all", s.folder+"_"+p.join("_"), p); });
+    }
+  });
 }
 
 function renderList(items, o){
-  const w=$("#secwrap"); state.list=items;
+  const w=$("#secwrap"); state.list=items; const all=o.folderAll||items;
+  const pathTxt=it=>it.path?[secOf(it._sec).label,...it.path].join(" / "):secOf(it._sec).label;
   w.innerHTML = `${o.crumb||""}
     <div class="sec-intro"><div><h2>${esc(o.title)}</h2>${o.desc?`<p>${esc(o.desc)}</p>`:""}</div>
-      <div class="toolbar"><span class="selinfo" id="selinfo"></span>
+      <div class="toolbar">
+        ${o.shareable&&o.shareScope&&!o.noFolderShare?`<button class="tbtn" id="shAll">Condividi cartella</button>`:""}
+        ${all.length?`<button class="tbtn primary dlonly" id="dlAll">${o.allLabel||`Scarica cartella (${all.length})`}</button>`:""}</div></div>
+    ${o.foldersHtml||""}
+    ${items.length?`${o.foldersHtml?`<h3 class="subhead">File in questa cartella</h3>`:""}
+    <div class="seltools"><span class="selinfo" id="selinfo"></span>
         <button class="tbtn" id="selAll"></button>
         ${o.shareable?`<button class="tbtn" id="shSel" disabled>Condividi selezione</button>`:""}
-        <button class="tbtn dlonly" id="dlSel" disabled>Scarica selezione</button>
-        ${o.shareable?`<button class="tbtn" id="shAll">Condividi cartella</button>`:""}
-        <button class="tbtn primary dlonly" id="dlAll">Scarica cartella (${items.length})</button></div></div>
+        <button class="tbtn dlonly" id="dlSel" disabled>Scarica selezione</button></div>
     <div class="grid ${o.tall?'tall':''}">${items.map(it=>`
       <article class="item" data-id="${it.id}">
         <label class="pick" title="Seleziona"><input type="checkbox" data-pick="${it.id}" aria-label="Seleziona ${esc(it.title)}"></label>
         <button class="thumb ${it.kind==='logo'?'contain':''}" data-open="${it.id}" style="${it.bg?`background:${it.bg}`:''}" aria-label="Anteprima di ${esc(it.title)}">
           <img loading="lazy" src="${it.thumb}" alt=""><span class="kind">${kindLabel(it)}</span></button>
-        <div class="info"><b>${esc(it.title)}</b><span class="fn">${esc(it.name)}</span><span class="spec">${specLine(it)}</span>
+        <div class="info"><b>${esc(it.title)}</b>
+          ${o.showPath?`<button class="fpath" data-goto="${it.id}">${esc(pathTxt(it))}</button>`:`<span class="fn">${esc(it.path?it.path.join(" / "):it.name)}</span>`}
+          <span class="spec">${specLine(it)}</span>
           <div class="row-actions"><button data-open="${it.id}">Anteprima</button>${o.shareable?`<button data-sh="${it.id}">Condividi</button>`:""}<button class="dlonly" data-dl="${it.id}">Scarica</button></div></div>
-      </article>`).join("")}</div>`;
+      </article>`).join("")}</div>`:""}`;
   w.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>openViewer(b.dataset.open));
   w.querySelectorAll("[data-dl]").forEach(b=>b.onclick=()=>startDownload([find(b.dataset.dl)], "single"));
   w.querySelectorAll("[data-sh]").forEach(b=>b.onclick=()=>openShare(`file-${b.dataset.sh}`, find(b.dataset.sh).title));
+  w.querySelectorAll("[data-goto]").forEach(b=>b.onclick=()=>{ const it=find(b.dataset.goto); state.section=it._sec; state.path=it.path?it.path.slice():[]; state.q=""; const q=$("#q"); if(q) q.value=""; document.querySelectorAll("[data-sec]").forEach(x=>x.setAttribute("aria-selected", x.dataset.sec===state.section)); renderSection(); });
   w.querySelectorAll("[data-pick]").forEach(c=>c.onchange=()=>{ c.checked?state.sel.add(c.dataset.pick):state.sel.delete(c.dataset.pick); syncSel(); });
-  $("#selAll").onclick=()=>{ const all=state.sel.size===items.length; state.sel=new Set(all?[]:items.map(i=>i.id)); syncSel(); };
-  $("#dlSel").onclick=()=>startDownload(items.filter(i=>state.sel.has(i.id)), "zip-sel", o.zipName);
-  $("#dlAll").onclick=()=>startDownload(items, "zip-all", o.zipName);
+  const sa0=$("#selAll"); if (sa0) sa0.onclick=()=>{ const al=state.sel.size===items.length; state.sel=new Set(al?[]:items.map(i=>i.id)); syncSel(); };
+  const ds=$("#dlSel"); if (ds) ds.onclick=()=>startDownload(items.filter(i=>state.sel.has(i.id)), "zip-sel", o.zipName||"FEBALCASA_File");
+  const da=$("#dlAll"); if (da) da.onclick=()=>startDownload(all, "zip-all", o.zipName||"FEBALCASA_File", o.base||null);
   const ss=$("#shSel"); if (ss) ss.onclick=()=>{ const ids=items.filter(i=>state.sel.has(i.id)).map(i=>i.id); openShare("file-"+ids.join("."), ids.length===1?find(ids[0]).title:`${ids.length} file selezionati`); };
   const sa=$("#shAll"); if (sa) sa.onclick=()=>openShare(o.shareScope, o.shareWhat);
+  if (o.onBound) o.onBound(w);
   syncSel();
 }
 function syncSel(){
@@ -489,7 +569,7 @@ function drawViewer(){
       ${list.length>1?`<button class="vnav prev" aria-label="File precedente">‹</button><button class="vnav next" aria-label="File successivo">›</button>`:""}
       ${it.kind==="pdf"?`<div class="pager"><button data-pg="-1" aria-label="Pagina precedente">‹</button><span>Pagina ${pg+1} di ${it.pages.length}</span><button data-pg="1" aria-label="Pagina successiva">›</button></div>`:""}
     </div>
-    <aside><span class="eyebrow" style="color:#9C9694">${esc(sec.label)}${it.folder?" / "+esc(folderLabel(sec,it.folder)):""} · ${state.viewer.idx+1} di ${list.length}</span>
+    <aside><span class="eyebrow" style="color:#9C9694">${esc(sec.label)}${it.path?" / "+esc(it.path.join(" / ")):""} · ${state.viewer.idx+1} di ${list.length}</span>
       <h3>${esc(it.title)}</h3>
       <dl><dt>File</dt><dd>${esc(it.name)}</dd><dt>Formato</dt><dd>${kindLabel(it)}</dd>
         ${it.kind==="photo"?`<dt>Misure</dt><dd>${it.w} × ${it.h} px</dd><dt>Risoluzione</dt><dd>${it.dpi} dpi</dd>`:""}
@@ -572,7 +652,7 @@ async function doDownload(items, q, mode, dialog, zipName, keepFolders){
       if (typeof JSZip==="undefined") throw new Error("zip");
       const zip=new JSZip(); let i=0;
       for (const it of items){
-        const isHR = it.kind==="photo" && it.hr; const pre = keepFolders && it.folder ? it.folder+"/" : "";
+        const isHR = it.kind==="photo" && it.hr; const rel = Array.isArray(keepFolders) && it.path ? it.path.slice(keepFolders.length) : []; const pre = rel.length ? rel.join("/")+"/" : "";
         if (!isHR || q==="alta") zip.file(pre+it.name, await fetchBlob(it.file));
         else if (q==="bassa") zip.file(pre+socialName(it.name), await makeSocial(it));
         else { zip.file("HD/"+pre+it.name, await fetchBlob(it.file)); zip.file("Web-retina/"+pre+socialName(it.name), await makeSocial(it)); }
