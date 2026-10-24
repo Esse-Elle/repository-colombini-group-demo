@@ -7,7 +7,7 @@ Contenuti di prova: illustrazioni, documenti e cataloghi a tema gattini, creati 
 ## Cosa si prova
 - Anteprima di foto, PDF, loghi e font prima del download
 - Download di un file, di una selezione o di tutta la cartella in ZIP
-- Foto catalogo archiviate solo in alta: la versione social HD a 150 dpi si crea al momento del download
+- Foto catalogo archiviate solo in alta: la versione LD web retina (2880 px, 150 dpi, sRGB) si crea al momento del download
 - Accesso tramite link per profilo (marketing di gruppo, dipendente, agente Febal Casa)
 
 - Foto catalogo divise in sottocartelle: CUCINA, GIORNO, NOTTE, ARMADI, SOFAS
