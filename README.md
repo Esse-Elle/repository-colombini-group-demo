@@ -14,6 +14,8 @@ Contenuti di prova: illustrazioni, documenti e cataloghi a tema gattini, creati 
 - Ricerca su nomi di cartelle e file con riconoscimento delle pagine (P04-05, pag 20-21, pag 27a, Foto pagina 48). Esempi: "sofas 48", "italiana 5", "modula 147", "pagina 27"
 - Condivisione di un file, di una selezione, di una sottocartella o di una sezione, con scadenza e permesso di sola visualizzazione
 
+- Foto PED divise per mese (PED Ottobre, PED Novembre), già in formato web retina 2304 × 2880 px, 150 dpi, sRGB
+
 ## Struttura
 - `index.html`: la pagina
 - `fc/`: file scaricabili di Febal Casa (brand, catalogo, ped, pdf)
