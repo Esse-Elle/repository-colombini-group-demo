@@ -10,6 +10,9 @@ Contenuti di prova: illustrazioni, documenti e cataloghi a tema gattini, creati 
 - Foto catalogo archiviate solo in alta: la versione social HD a 150 dpi si crea al momento del download
 - Accesso tramite link per profilo (marketing di gruppo, dipendente, agente Febal Casa)
 
+- Foto catalogo divise in sottocartelle: CUCINA, GIORNO, NOTTE, ARMADI, SOFAS
+- Condivisione di un file, di una selezione, di una sottocartella o di una sezione, con scadenza e permesso di sola visualizzazione
+
 ## Struttura
 - `index.html`: la pagina
 - `fc/`: file scaricabili di Febal Casa (brand, catalogo, ped, pdf)
